@@ -240,6 +240,7 @@ const p4 = {
       type: 'rows',
       titleJa: 'TTX 4-A　4つの問い',
       titleEn: 'TTX 4-A — The Four Questions',
+      debriefAfter: 'CASE 4-A',
       lead: '進め方：班で3場面を選ぶ → 4問に回答（15分） → 班発表（10分）',
       leadEn: 'Format: pick three scenes, answer all four questions (15 min), then present (10 min).',
       rows: [
