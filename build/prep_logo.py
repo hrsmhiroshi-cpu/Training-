@@ -18,7 +18,7 @@ from PIL import Image
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 ASSETS = REPO / "assets"
-SOURCES = ["logo.tif", "logo.tiff", "logo.png", "logo.jpg", "logo.jpeg"]
+SOURCES = ["logo.tif", "logo.tiff", "logo.png", "logo.jpg", "logo.jpeg", "PastedGraphic-1.png"]
 
 
 def main() -> int:

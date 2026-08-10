@@ -6,10 +6,10 @@ const path = require('path');
 
 // ── Brand palette (taken from the corporate logo: navy + teal) ──────────────
 const C = {
-  navy:   '0F2D52',
-  navyDk: '0A2039',
-  teal:   '17AF98',
-  tealDk: '0E8C79',
+  navy:   '093259',   // sampled from the corporate logo
+  navyDk: '06223D',
+  teal:   '12B198',   // sampled from the corporate logo
+  tealDk: '0D8A76',
   ink:    '1B2733',
   muted:  '5F7183',
   tint:   'EFF4F8',
