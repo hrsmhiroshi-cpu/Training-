@@ -331,10 +331,10 @@ function objectiveBand(slide, objJa, objEn) {
   ], { x: G.M + 0.26, y: DENSE.objY + 0.05, w: G.CW - 0.52, h: DENSE.objH - 0.1, valign: 'middle', margin: 0, lineSpacingMultiple: 0.9 });
 }
 
-function sopBand(slide, sopJa, sopEn) {
+function sopBand(slide, sopJa, sopEn, label) {
   if (!sopJa) return;
   slide.addText([
-    ja('Site SOP優先　', { fontSize: 9, bold: true, color: C.tealDk }),
+    ja((label || 'Site SOP優先') + '　', { fontSize: 9, bold: true, color: C.tealDk }),
     ja(sopJa, { fontSize: 9, bold: false, color: C.ink, breakLine: true }),
     en(sopEn || '', { fontSize: 7.5, color: C.muted }),
   ], { x: G.M, y: DENSE.sopY, w: G.CW, h: DENSE.sopH, valign: 'top', margin: 0, lineSpacingMultiple: 0.88 });
@@ -388,7 +388,7 @@ function topics(pres, d, ctx) {
     });
   });
 
-  sopBand(s, d.sop, d.sopEn);
+  sopBand(s, d.sop, d.sopEn, d.sopLabel);
   srcLine(s, d.sources);
   footer(s, ctx.footJa, ctx.footEn, ctx.n);
   return s;
@@ -426,7 +426,8 @@ function caseSlide(pres, d, ctx) {
   const rowsN = Math.ceil(pts.length / cols);
   const gx = 0.28, gy = 0.12;
   const cw = (G.CW - gx) / cols;
-  const bot = d.inject ? DENSE.sopY - 0.62 : DENSE.sopY - 0.06;
+  const nInj = (d.inject ? 1 : 0) + (d.inject2 ? 1 : 0);
+  const bot = nInj ? DENSE.sopY - 0.16 - nInj * 0.46 - (nInj - 1) * 0.06 : DENSE.sopY - 0.06;
   const ch = ((bot - py) - gy * (rowsN - 1)) / rowsN;
   pts.forEach((p, i) => {
     const r = Math.floor(i / cols), col = i % cols;
@@ -440,17 +441,20 @@ function caseSlide(pres, d, ctx) {
     ], { x: x + 0.6, y: y + 0.06, w: cw - 0.8, h: ch - 0.12, valign: 'middle', margin: 0, lineSpacingMultiple: 0.88 });
   });
 
-  if (d.inject) {
-    const iy = DENSE.sopY - 0.56;
-    s.addShape('roundRect', { x: G.M, y: iy, w: G.CW, h: 0.5, rectRadius: 0.04, fill: { color: C.tintTl }, line: { type: 'none' } });
+  const injs = [];
+  if (d.inject) injs.push({ t: d.inject, e: d.injectEn });
+  if (d.inject2) injs.push({ t: d.inject2, e: d.inject2En });
+  injs.forEach((it, i) => {
+    const iy = DENSE.sopY - 0.10 - (injs.length - i) * 0.46 - (injs.length - 1 - i) * 0.06;
+    s.addShape('roundRect', { x: G.M, y: iy, w: G.CW, h: 0.46, rectRadius: 0.04, fill: { color: C.tintTl }, line: { type: 'none' } });
     s.addText([
-      ja('追加付与　', { fontSize: 8.5, bold: true, color: C.tealDk }),
-      ja(d.inject, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
-      en(d.injectEn, { fontSize: 7.5, color: C.muted }),
-    ], { x: G.M + 0.26, y: iy + 0.04, w: G.CW - 0.52, h: 0.42, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
-  }
+      ja('追加付与' + (i === 0 ? '①' : '②') + '　', { fontSize: 8.5, bold: true, color: C.tealDk }),
+      ja(it.t, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
+      en(it.e, { fontSize: 7.5, color: C.muted }),
+    ], { x: G.M + 0.26, y: iy + 0.03, w: G.CW - 0.52, h: 0.40, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
+  });
 
-  sopBand(s, d.sop, d.sopEn);
+  sopBand(s, d.sop, d.sopEn, d.sopLabel);
   srcLine(s, d.sources);
   footer(s, ctx.footJa, ctx.footEn, ctx.n);
   return s;
@@ -481,9 +485,9 @@ function debrief(pres, d, ctx) {
       x: G.M, y, w: G.CW, h: rh, rectRadius: 0.04,
       fill: { color: a.key ? C.tintTl : C.tint }, line: { type: 'none' },
     });
-    badge(s, G.M + 0.22, y + (rh - 0.38) / 2, i + 1, { size: 0.38, fill: C.teal });
+    badge(s, G.M + 0.22, y + (rh - 0.38) / 2, (d.startN || 1) + i, { size: 0.38, fill: C.teal });
     s.addText([
-      ja('問' + (i + 1) + '　' + a.q, { fontSize: 9, bold: false, color: C.muted, breakLine: true }),
+      ja((d.qLabel || '問') + ((d.startN || 1) + i) + '　' + a.q, { fontSize: 9, bold: false, color: C.muted, breakLine: true }),
       ja(a.a, { fontSize: 12, bold: true, color: C.ink, breakLine: true }),
       en(a.aEn, { fontSize: 8, color: C.muted }),
     ], { x: G.M + 0.70, y: y + 0.07, w: G.CW - 0.96, h: rh - 0.14, valign: 'middle', margin: 0, lineSpacingMultiple: 0.88 });
@@ -511,7 +515,7 @@ function debrief(pres, d, ctx) {
     ], { x: G.M + 0.24, y: cy + 0.03, w: G.CW - 0.48, h: splitH - 0.06, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
   }
 
-  sopBand(s, d.sop, d.sopEn);
+  sopBand(s, d.sop, d.sopEn, d.sopLabel);
   srcLine(s, d.sources);
   footer(s, ctx.footJa, ctx.footEn, ctx.n);
   return s;

@@ -2,6 +2,7 @@
 // TTX 講評（模範解答）。設問①〜④とスライドの番号が一致するように書く。
 // Model answers, numbered to match the questions on the case slide.
 
+const SOP_LABEL = '注記';
 const SOP = '模範解答は判断の型を示すものです。実際の手順は各現場のSite SOPと警備指令書が優先します。';
 const SOP_EN = 'These answers show a pattern of reasoning. The Site SOP and post orders always take precedence.';
 
@@ -11,7 +12,7 @@ const D = {
   'CASE 1-A': {
     titleJa: 'TTX 1-A 模範解答', titleEn: 'TTX 1-A — Model Answers',
     sources: '個人情報保護法、不正競争防止法、経済産業省「営業秘密管理指針」',
-    sop: SOP, sopEn: SOP_EN,
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
     answers: [
       { q: 'どの柱に関わるか', a: 'Asset（情報資産）。外部に出れば Reputation にも及ぶ。', aEn: 'Asset — information. If it leaves the building it becomes Reputation as well.' },
       { q: '拾ってよいか。読んでよいか', key: true, a: '拾ってよい。読んではいけない。表紙の分類表示までで判断する。', aEn: 'Pick it up, yes. Do not read it. Judge from the cover classification only.' },
@@ -27,7 +28,7 @@ const D = {
   'CASE 1-B': {
     titleJa: 'TTX 1-B 模範解答', titleEn: 'TTX 1-B — Model Answers',
     sources: '警備業法、個人情報保護法、不正競争防止法',
-    sop: SOP, sopEn: SOP_EN,
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
     answers: [
       { q: '社員証は撮影の根拠になるか', a: 'ならない。社員証は入館の資格を示すだけで、撮影の可否とは別の問題。', aEn: 'No. A badge shows a right of entry. Whether they may photograph is separate.' },
       { q: '中止を求められるか', a: '求められる。根拠は管理権者から委ねられた撮影禁止の運用。', aEn: 'Yes. The basis is the no-photography rule delegated by the site authority.' },
@@ -42,7 +43,7 @@ const D = {
   'CASE 2-A': {
     titleJa: 'TTX 2-A 模範解答', titleEn: 'TTX 2-A — Model Answers',
     sources: '警備業法、刑法、刑事訴訟法',
-    sop: SOP, sopEn: SOP_EN,
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
     answers: [
       { q: '犯罪か、確認事項か', a: '確認が必要な事象。社員が会社備品を持つこと自体は犯罪ではなく、明白性を満たさない。', aEn: 'A matter to verify. An employee holding company property is not itself a crime, and the obviousness test is not met.' },
       { q: '様式を知らないことの影響', a: '判断の根拠にしない。知らないなら確認できる者に確認する。', aEn: 'It is not a basis for a decision. If you do not know, ask someone who can confirm.' },
@@ -58,7 +59,7 @@ const D = {
   'CASE 2-B': {
     titleJa: 'TTX 2-B 模範解答', titleEn: 'TTX 2-B — Model Answers',
     sources: '個人情報保護法、刑事訴訟法、警察官職務執行法',
-    sop: SOP, sopEn: SOP_EN,
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
     answers: [
       { q: '警察官であることは根拠になるか', key: true, a: 'ならない。情報の管理権はクライアントにある。警察官であることは開示の根拠ではない。', aEn: 'No. The client controls the information. Being a police officer is not a basis for disclosure.' },
       { q: '警備員に判断する権限はあるか', a: 'ない。取り次ぐところまでが役割。開示の可否は契約とクライアントが決める。', aEn: 'No. Your role ends at referral. The contract and the client decide.' },
@@ -81,10 +82,8 @@ const D = {
       { q: 'どう巡回するか', key: true, a: '次の巡回で立寄点を増やす、時刻をずらす、経路を逆順にする。設計を変えるところまで踏み込む。', aEn: 'Add a checkpoint, shift the timing, reverse the route. Go as far as changing the design.' },
       { q: 'どう報告するか', a: '事実を先に、評価を後に。分からないことは「不明」と書く。C は避難障害として即時報告。', aEn: 'Fact first, assessment second. Write "unknown" where you did not know. Report C immediately as an escape obstruction.' },
     ],
-    inject1: { q: 'C 搬入作業が継続中', a: '避難障害。その場で除去してよい数少ない例。作業者に声をかけてから動かす。', aEn: 'It blocks escape — one of the few things you may clear on the spot, after speaking to the workers.' },
-    inject2: { q: 'F 前回の記憶が不確か', key: true, a: '不確かであることを報告に書く。写真と時刻を残せば、次の巡回で比較できる。', aEn: 'Write that you were unsure. A photograph and a time make the next round comparable.' },
-    split: '③まで届いた班は少ない。設計の変更に踏み込めたかを評価する。',
-    splitEn: 'Few groups reach question 3. Credit those who changed the design of the next patrol.',
+    split: 'C は避難障害で、その場で除去してよい数少ない例。F は「不確か」と報告に書けるかが要点。',
+    splitEn: 'C may be cleared on the spot — one of the few. For F, the point is writing that you were unsure.',
   },
 
   'CASE 4-B': {
