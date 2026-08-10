@@ -60,8 +60,8 @@ function rows(pres, d, ctx) {
     const tx = G.M + 0.94;
     const tw = G.CW - 1.24;
     s.addText([
-      ja(it.ja, { fontSize: it.small ? 13 : 14.5, bold: true, color: C.ink, breakLine: true }),
-      en(it.en, { fontSize: it.small ? 11 : 12.5 }),
+      ja(it.ja, { fontSize: it.small ? 15 : 17, bold: true, color: C.ink, breakLine: true }),
+      en(it.en, { fontSize: it.small ? 13.5 : 15 }),
     ], { x: tx, y: y + 0.12, w: tw, h: rh - 0.2, valign: 'middle', margin: 0, lineSpacingMultiple: 0.92 });
   });
   footer(s, ctx.footJa, ctx.footEn, ctx.n);
@@ -93,12 +93,12 @@ function cards(pres, d, ctx) {
     });
     badge(s, x + 0.26, y + 0.26, c.n != null ? c.n : i + 1, { fill: c.accent ? C.teal : C.navy });
     s.addText([
-      ja(c.h, { fontSize: 16, bold: true, color: C.navy, breakLine: true }),
-      en(c.hEn, { fontSize: 11, color: C.teal }),
+      ja(c.h, { fontSize: 19, bold: true, color: C.navy, breakLine: true }),
+      en(c.hEn, { fontSize: 13, color: C.teal }),
     ], { x: x + 0.82, y: y + 0.24, w: cw - 1.08, h: 0.72, valign: 'top', margin: 0, lineSpacingMultiple: 0.9 });
     s.addText([
-      ja(c.b, { fontSize: 12.5, bold: false, color: C.ink, breakLine: true }),
-      en(c.bEn, { fontSize: 11 }),
+      ja(c.b, { fontSize: 15, bold: false, color: C.ink, breakLine: true }),
+      en(c.bEn, { fontSize: 14 }),
     ], { x: x + 0.28, y: y + 1.06, w: cw - 0.56, h: ch - 1.28, valign: 'top', margin: 0, lineSpacingMultiple: 0.95 });
   });
   footer(s, ctx.footJa, ctx.footEn, ctx.n);
@@ -117,11 +117,11 @@ function quote(pres, d, ctx) {
   });
   s.addText(d.quoteJa, {
     x: G.M + 0.5, y: boxY + 0.34, w: G.CW - 1.0, h: boxH * 0.5 - 0.2, valign: 'top', margin: 0,
-    fontFace: F.ja, fontSize: d.quoteSize || 15, bold: true, color: C.white, lineSpacingMultiple: 1.02,
+    fontFace: F.ja, fontSize: d.quoteSize || 18, bold: true, color: C.white, lineSpacingMultiple: 1.02,
   });
   s.addText(d.quoteEn, {
     x: G.M + 0.5, y: boxY + boxH * 0.5 + 0.16, w: G.CW - 1.0, h: boxH * 0.5 - 0.44, valign: 'top', margin: 0,
-    fontFace: F.en, fontSize: d.quoteEnSize || 12, color: 'DCEFEB', lineSpacingMultiple: 1.0,
+    fontFace: F.en, fontSize: d.quoteEnSize || 15, color: 'DCEFEB', lineSpacingMultiple: 1.0,
   });
   if (d.source) {
     s.addText(d.source, {
@@ -138,8 +138,8 @@ function quote(pres, d, ctx) {
     });
     badge(s, G.M + 0.3, ny + (noteH - 0.4) / 2, '!', { size: 0.4 });
     s.addText([
-      ja(d.note, { fontSize: 14.5, bold: true, color: C.navy, breakLine: true }),
-      en(d.noteEn, { fontSize: 11, color: C.ink }),
+      ja(d.note, { fontSize: 16, bold: true, color: C.navy, breakLine: true }),
+      en(d.noteEn, { fontSize: 14, color: C.ink }),
     ], { x: G.M + 0.94, y: ny + 0.12, w: G.CW - 1.3, h: noteH - 0.24, valign: 'middle', margin: 0, lineSpacingMultiple: 0.95 });
   }
   footer(s, ctx.footJa, ctx.footEn, ctx.n);
@@ -164,13 +164,13 @@ function two(pres, d, ctx) {
       fill: { color: i === 0 ? C.tint : C.tintTl }, line: { type: 'none' },
     });
     s.addText([
-      ja(col.h, { fontSize: 16, bold: true, color: i === 0 ? C.navy : C.tealDk, breakLine: true }),
-      en(col.hEn, { fontSize: 11 }),
+      ja(col.h, { fontSize: 19, bold: true, color: i === 0 ? C.navy : C.tealDk, breakLine: true }),
+      en(col.hEn, { fontSize: 13, color: C.muted }),
     ], { x: x + 0.3, y: top + 0.24, w: cw - 0.6, h: 0.74, valign: 'top', margin: 0, lineSpacingMultiple: 0.9 });
     const items = [];
     col.items.forEach((it, k) => {
-      items.push(ja('・' + it.ja, { fontSize: 12.5, bold: true, color: C.ink, breakLine: true }));
-      items.push(en('    ' + it.en, { fontSize: 11.5, breakLine: k !== col.items.length - 1 }));
+      items.push(ja('・' + it.ja, { fontSize: 15, bold: true, color: C.ink, breakLine: true }));
+      items.push(en(it.en, { fontSize: 14, breakLine: k !== col.items.length - 1 }));
     });
     s.addText(items, {
       x: x + 0.3, y: top + 1.08, w: cw - 0.6, h: ch - 1.34, valign: 'top', margin: 0,
@@ -206,8 +206,8 @@ function grid(pres, d, ctx) {
     s.addShape('roundRect', { x, y, w: cw, h: ch, rectRadius: 0.04, fill: { color: C.tint }, line: { type: 'none' } });
     badge(s, x + 0.2, y + (ch - 0.36) / 2, it.n != null ? it.n : i + 1, { size: 0.36, fill: C.navy });
     s.addText([
-      ja(it.ja, { fontSize: 11.5, bold: true, color: C.ink, breakLine: true }),
-      en(it.en, { fontSize: 10.5 }),
+      ja(it.ja, { fontSize: 15, bold: true, color: C.ink, breakLine: true }),
+      en(it.en, { fontSize: 14 }),
     ], { x: x + 0.66, y: y + 0.08, w: cw - 0.92, h: ch - 0.16, valign: 'middle', margin: 0, lineSpacingMultiple: 0.9 });
   });
   footer(s, ctx.footJa, ctx.footEn, ctx.n);
@@ -225,7 +225,7 @@ function ttx(pres, d, ctx) {
     ja('状況付与  ', { fontSize: 10.5, bold: true, color: C.teal }),
     en('SITUATION', { fontSize: 9, color: C.teal, italic: false, breakLine: true }),
     ja(d.scenarioJa, { fontSize: 13.5, bold: true, color: C.white, breakLine: true }),
-    en(d.scenarioEn, { fontSize: 10, color: 'DCEFEB' }),
+    en(d.scenarioEn, { fontSize: 13.5, color: 'DCEFEB' }),
   ], { x: G.M + 0.42, y: sy + 0.2, w: G.CW - 0.84, h: sh - 0.4, valign: 'top', margin: 0, lineSpacingMultiple: 0.96 });
 
   const qy = sy + sh + 0.26;
@@ -302,8 +302,8 @@ const DENSE = {
 
 function headerSm(slide, titleJa, titleEn, blockLabel) {
   slide.addText([
-    ja(titleJa, { fontSize: 23, bold: true, color: C.navy, breakLine: true }),
-    en(titleEn, { fontSize: 11, color: C.teal }),
+    ja(titleJa, { fontSize: 27, bold: true, color: C.navy, breakLine: true }),
+    en(titleEn, { fontSize: 14, color: C.teal }),
   ], { x: G.M, y: DENSE.titleY, w: G.titleW - 0.9, h: DENSE.titleH, valign: 'top', margin: 0, lineSpacingMultiple: 0.94 });
   if (blockLabel) {
     slide.addShape('roundRect', {
@@ -324,19 +324,19 @@ function objectiveBand(slide, objJa, objEn) {
     fill: { color: C.tintTl }, line: { type: 'none' },
   });
   slide.addText([
-    ja('身につくこと　', { fontSize: 9.5, bold: true, color: C.tealDk }),
-    en('What You\'ll Learn　', { fontSize: 9, color: C.tealDk, italic: false }),
-    ja(objJa, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
-    en(objEn, { fontSize: 10.5 }),
+    ja('身につくこと　', { fontSize: 11, bold: true, color: C.tealDk }),
+    en('What You\'ll Learn　', { fontSize: 10.5, color: C.tealDk }),
+    ja(objJa, { fontSize: 13, bold: true, color: C.ink, breakLine: true }),
+    en(objEn, { fontSize: 12.5 }),
   ], { x: G.M + 0.26, y: DENSE.objY + 0.05, w: G.CW - 0.52, h: DENSE.objH - 0.1, valign: 'middle', margin: 0, lineSpacingMultiple: 0.9 });
 }
 
 function sopBand(slide, sopJa, sopEn, label) {
   if (!sopJa) return;
   slide.addText([
-    ja((label || 'Site SOP優先') + '　', { fontSize: 9, bold: true, color: C.tealDk }),
-    ja(sopJa, { fontSize: 9, bold: false, color: C.ink, breakLine: true }),
-    en(sopEn || '', { fontSize: 8, color: C.muted, italic: true }),
+    ja((label || 'Site SOP優先') + '　', { fontSize: 10, bold: true, color: C.tealDk }),
+    ja(sopJa, { fontSize: 10, bold: false, color: C.ink, breakLine: true }),
+    en(sopEn || '', { fontSize: 9, color: C.muted, italic: true }),
   ], { x: G.M, y: DENSE.sopY, w: G.CW, h: DENSE.sopH, valign: 'top', margin: 0, lineSpacingMultiple: 0.88 });
 }
 
@@ -372,15 +372,15 @@ function topics(pres, d, ctx) {
     });
     badge(s, x + 0.2, y + 0.18, t.n != null ? t.n : i + 1, { size: 0.34, fill: C.navy });
     s.addText([
-      ja(t.h, { fontSize: 12, bold: true, color: C.navy, breakLine: true }),
-      en(t.hEn, { fontSize: 10.5, color: C.teal }),
+      ja(t.h, { fontSize: 17, bold: true, color: C.navy, breakLine: true }),
+      en(t.hEn, { fontSize: 14, color: C.teal }),
     ], { x: x + 0.62, y: y + 0.14, w: cw - 0.84, h: 0.56, valign: 'top', margin: 0, lineSpacingMultiple: 0.88 });
 
     const runs = [];
     t.b.forEach((bl, k) => {
       const last = k === t.b.length - 1;
-      runs.push(ja('・' + bl.ja, { fontSize: 9.5, bold: false, color: C.ink, breakLine: true }));
-      runs.push(en('  ' + bl.en, { fontSize: 9.5, breakLine: !last }));
+      runs.push(ja('・' + bl.ja, { fontSize: 14, bold: false, color: C.ink, breakLine: true }));
+      runs.push(en(bl.en, { fontSize: 13.5, breakLine: !last }));
     });
     s.addText(runs, {
       x: x + 0.24, y: y + 0.74, w: cw - 0.48, h: ch - 0.9, valign: 'top', margin: 0,
@@ -407,17 +407,17 @@ function caseSlide(pres, d, ctx) {
     Math.min(2.20, Math.max(1.05, 0.40 + jaLines * 0.21 + enLines * 0.135 + 0.14));
   s.addShape('roundRect', { x: G.M, y: sy, w: G.CW, h: sh, rectRadius: 0.04, fill: { color: C.navy }, line: { type: 'none' } });
   s.addText([
-    ja('シナリオ　', { fontSize: 9.5, bold: true, color: C.teal }),
-    en('SCENARIO', { fontSize: 8, color: C.teal, italic: false, breakLine: true }),
-    ja(d.scenarioJa, { fontSize: 11.5, bold: true, color: C.white, breakLine: true }),
-    en(d.scenarioEn, { fontSize: 10, color: 'DCEFEB' }),
+    ja('シナリオ　', { fontSize: 11, bold: true, color: C.teal }),
+    en('SCENARIO', { fontSize: 9.5, color: C.teal, breakLine: true }),
+    ja(d.scenarioJa, { fontSize: 15, bold: true, color: C.white, breakLine: true }),
+    en(d.scenarioEn, { fontSize: 13.5, color: 'DCEFEB' }),
   ], { x: G.M + 0.34, y: sy + 0.14, w: G.CW - 0.68, h: sh - 0.28, valign: 'top', margin: 0, lineSpacingMultiple: 0.92 });
 
   const qy = sy + sh + 0.16;
   s.addText([
-    ja('問い　', { fontSize: 10, bold: true, color: C.tealDk }),
-    ja(d.questionJa, { fontSize: 12.5, bold: true, color: C.navy, breakLine: true }),
-    en(d.questionEn, { fontSize: 10.5 }),
+    ja('問い　', { fontSize: 12, bold: true, color: C.tealDk }),
+    ja(d.questionJa, { fontSize: 16, bold: true, color: C.navy, breakLine: true }),
+    en(d.questionEn, { fontSize: 13.5 }),
   ], { x: G.M, y: qy, w: G.CW, h: 0.62, valign: 'top', margin: 0, lineSpacingMultiple: 0.9 });
 
   const py = qy + 0.68;
@@ -436,8 +436,8 @@ function caseSlide(pres, d, ctx) {
     s.addShape('roundRect', { x, y, w: cw, h: ch, rectRadius: 0.04, fill: { color: C.tint }, line: { type: 'none' } });
     badge(s, x + 0.18, y + (ch - 0.32) / 2, i + 1, { size: 0.32, fill: C.teal });
     s.addText([
-      ja(p.ja, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
-      en(p.en, { fontSize: 10.5 }),
+      ja(p.ja, { fontSize: 14, bold: true, color: C.ink, breakLine: true }),
+      en(p.en, { fontSize: 13.5 }),
     ], { x: x + 0.6, y: y + 0.06, w: cw - 0.8, h: ch - 0.12, valign: 'middle', margin: 0, lineSpacingMultiple: 0.88 });
   });
 
@@ -448,9 +448,9 @@ function caseSlide(pres, d, ctx) {
     const iy = DENSE.sopY - 0.10 - (injs.length - i) * 0.46 - (injs.length - 1 - i) * 0.06;
     s.addShape('roundRect', { x: G.M, y: iy, w: G.CW, h: 0.46, rectRadius: 0.04, fill: { color: C.tintTl }, line: { type: 'none' } });
     s.addText([
-      ja('追加付与' + (i === 0 ? '①' : '②') + '　', { fontSize: 8.5, bold: true, color: C.tealDk }),
-      ja(it.t, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
-      en(it.e, { fontSize: 9.5 }),
+      ja('追加付与' + (i === 0 ? '①' : '②') + '　', { fontSize: 10.5, bold: true, color: C.tealDk }),
+      ja(it.t, { fontSize: 13.5, bold: true, color: C.ink, breakLine: true }),
+      en(it.e, { fontSize: 12.5 }),
     ], { x: G.M + 0.26, y: iy + 0.03, w: G.CW - 0.52, h: 0.40, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
   });
 
@@ -487,9 +487,9 @@ function debrief(pres, d, ctx) {
     });
     badge(s, G.M + 0.22, y + (rh - 0.38) / 2, (d.startN || 1) + i, { size: 0.38, fill: C.teal });
     s.addText([
-      ja((d.qLabel || '問') + ((d.startN || 1) + i) + '　' + a.q, { fontSize: 9.5, bold: false, color: C.muted, breakLine: true }),
-      ja(a.a, { fontSize: 12, bold: true, color: C.ink, breakLine: true }),
-      en(a.aEn, { fontSize: 11 }),
+      ja((d.qLabel || '問') + ((d.startN || 1) + i) + '　' + a.q, { fontSize: 11.5, bold: false, color: C.muted, breakLine: true }),
+      ja(a.a, { fontSize: 15, bold: true, color: C.ink, breakLine: true }),
+      en(a.aEn, { fontSize: 14 }),
     ], { x: G.M + 0.70, y: y + 0.07, w: G.CW - 0.96, h: rh - 0.14, valign: 'middle', margin: 0, lineSpacingMultiple: 0.88 });
   });
 
@@ -498,10 +498,10 @@ function debrief(pres, d, ctx) {
     const y = cy + i * (0.46 + 0.08);
     s.addShape('roundRect', { x: G.M, y, w: G.CW, h: 0.46, rectRadius: 0.04, fill: { color: 'EEF6FA' }, line: { type: 'none' } });
     s.addText([
-      ja('追加付与' + (i === 0 ? '①' : '②') + '　', { fontSize: 8.5, bold: true, color: C.tealDk }),
-      ja(it.q + '　→　', { fontSize: 8.5, bold: false, color: C.muted }),
-      ja(it.a, { fontSize: 11, bold: true, color: C.ink, breakLine: true }),
-      en(it.aEn, { fontSize: 9.5 }),
+      ja('追加付与' + (i === 0 ? '①' : '②') + '　', { fontSize: 10.5, bold: true, color: C.tealDk }),
+      ja(it.q + '　→　', { fontSize: 10.5, bold: false, color: C.muted }),
+      ja(it.a, { fontSize: 13.5, bold: true, color: C.ink, breakLine: true }),
+      en(it.aEn, { fontSize: 12.5 }),
     ], { x: G.M + 0.24, y: y + 0.03, w: G.CW - 0.48, h: 0.40, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
   });
   if (injects.length) cy += injH + 0.12;
@@ -509,9 +509,9 @@ function debrief(pres, d, ctx) {
   if (d.split) {
     s.addShape('roundRect', { x: G.M, y: cy, w: G.CW, h: splitH, rectRadius: 0.04, fill: { color: C.navy }, line: { type: 'none' } });
     s.addText([
-      ja('割れる論点　', { fontSize: 9, bold: true, color: C.teal }),
-      ja(d.split, { fontSize: 10.5, bold: true, color: C.white, breakLine: true }),
-      en(d.splitEn, { fontSize: 9.5, color: 'DCEFEB' }),
+      ja('割れる論点　', { fontSize: 10.5, bold: true, color: C.teal }),
+      ja(d.split, { fontSize: 13, bold: true, color: C.white, breakLine: true }),
+      en(d.splitEn, { fontSize: 12, color: 'DCEFEB' }),
     ], { x: G.M + 0.24, y: cy + 0.03, w: G.CW - 0.48, h: splitH - 0.06, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
   }
 

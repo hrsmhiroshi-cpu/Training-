@@ -26,6 +26,46 @@ function withDebriefs(slides) {
   return out;
 }
 
+// The decks are projected from a long throw, so body text is large. That caps how
+// much fits on one slide: topics run two per slide, lists five per slide. Anything
+// longer is split across continuation slides rather than shrunk.
+function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
+
+function splitForLegibility(slides) {
+  const out = [];
+  for (const sd of slides) {
+    if (sd.type === 'topics' && sd.topics.length > 2) {
+      const parts = chunk(sd.topics, 2);
+      parts.forEach((grp, i) => {
+        out.push(Object.assign({}, sd, {
+          topics: grp,
+          titleJa: sd.titleJa + `（${i + 1}/${parts.length}）`,
+          obj: i === 0 ? sd.obj : undefined,
+          objEn: i === 0 ? sd.objEn : undefined,
+        }));
+      });
+    } else if (sd.type === 'grid' && sd.items.length > 5) {
+      const per = Math.ceil(sd.items.length / Math.ceil(sd.items.length / 5));
+      const parts = chunk(sd.items, per);
+      parts.forEach((grp, i) => {
+        out.push(Object.assign({}, sd, {
+          items: grp,
+          titleJa: sd.titleJa + `（${i + 1}/${parts.length}）`,
+          lead: i === 0 ? sd.lead : undefined,
+          leadEn: i === 0 ? sd.leadEn : undefined,
+        }));
+      });
+    } else {
+      out.push(sd);
+    }
+  }
+  return out;
+}
+
 let total = 0;
 let debriefCount = 0;
 for (const deck of DECKS) {
@@ -34,7 +74,7 @@ for (const deck of DECKS) {
   pres.author = '警備員指導教育責任者';
   pres.title = deck.footJa;
 
-  const slides = withDebriefs(deck.slides);
+  const slides = splitForLegibility(withDebriefs(deck.slides));
   slides.forEach((sd, i) => {
     const fn = L[sd.type];
     if (!fn) throw new Error(`unknown slide type: ${sd.type} in ${deck.file}`);
