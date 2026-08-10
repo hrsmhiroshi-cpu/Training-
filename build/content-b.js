@@ -1,0 +1,313 @@
+'use strict';
+// 第4時限・第5時限
+const { COMMON_META_JA, COMMON_META_EN } = require('./content-a');
+
+// ── 第4時限 業務別教育1「巡回の方法」 ────────────────────────────────────
+const p4 = {
+  file: '03_4限_巡回.pptx',
+  footJa: '第4時限｜業務別教育1 巡回の方法に関すること',
+  footEn: 'Period 4 | Task-Specific Training 1 — Patrol Methods',
+  slides: [
+    {
+      type: 'title',
+      kicker: '第4時限　10:25 – 11:25　業務別教育1',
+      kickerEn: 'Period 4 — Task-Specific Training 1',
+      titleJa: '巡回の方法に関すること',
+      titleEn: 'Patrol Methods',
+      metaJa: COMMON_META_JA,
+      metaEn: COMMON_META_EN,
+    },
+    {
+      type: 'cards',
+      titleJa: '巡回の目的は3つ',
+      titleEn: 'Patrol Has Three Purposes',
+      cols: 3,
+      cards: [
+        {
+          n: '1', h: '発見', hEn: 'Detect',
+          b: '異常を、被害になる前に見つける。見つけられる場所に、見つけられる時間に行く。',
+          bEn: 'Find the anomaly before it becomes a loss — by being in the right place at the right time.',
+        },
+        {
+          n: '2', h: '抑止', hEn: 'Deter', accent: true,
+          b: '「見られている」と思わせる。制服と存在そのものが機能する。',
+          bEn: 'Create the sense of being watched. The uniform and your presence do this work.',
+        },
+        {
+          n: '3', h: '記録', hEn: 'Document',
+          b: '実施した事実を残す。後から証明できなければ、していないのと同じ。',
+          bEn: 'Leave evidence that it happened. What cannot be shown later may as well not have occurred.',
+        },
+      ],
+    },
+    {
+      type: 'two',
+      titleJa: '定時巡回と不定時巡回',
+      titleEn: 'Fixed-Time and Variable-Time Patrols',
+      left: {
+        h: '定時巡回', hEn: 'Fixed-time patrol',
+        items: [
+          { ja: '時刻を定めて実施する', en: 'Carried out at set times' },
+          { ja: '確実で、記録も揃いやすい', en: 'Reliable, and easy to evidence' },
+          { ja: '弱点：時刻を読まれる', en: 'Weakness: the timing can be learned' },
+        ],
+      },
+      right: {
+        h: '不定時巡回', hEn: 'Variable-time patrol',
+        items: [
+          { ja: '時刻・順路をずらして実施する', en: 'Timing and route are varied' },
+          { ja: '読まれにくく、抑止力が高い', en: 'Harder to predict; stronger deterrence' },
+          { ja: '弱点：抜けが出やすい。設計が要る', en: 'Weakness: gaps appear without deliberate design' },
+        ],
+      },
+      note: '失敗例 ― 毎日同じ時刻、同じ順路。これは「警備員が来ない時間帯」を自分で作っていることになります。',
+      noteEn: 'The classic failure: same time, same route, every day. You are advertising exactly when nobody will come.',
+    },
+    {
+      type: 'rows',
+      titleJa: '経路・立寄点・警戒点・死角',
+      titleEn: 'Route, Checkpoints, Critical Points, Blind Spots',
+      lead: '巡回設計とは、要するに「死角をどう潰すか」の設計です。',
+      leadEn: 'Designing a patrol is, in essence, designing how blind spots get eliminated.',
+      rows: [
+        { ja: '経路 ― 巡回する順路。逆順・分割で変化をつける。', en: 'Route — the order you walk it. Reverse it, split it, vary it.' },
+        { ja: '立寄点 ― 必ず立ち寄り、確認したことを残せる地点。', en: 'Checkpoint — a point you must visit, and where the visit can be evidenced.' },
+        { ja: '警戒点 ― 事故が起きやすい、または被害が大きい重要箇所。', en: 'Critical point — where incidents are likely, or where the loss would be greatest.' },
+        { ja: '死角 ― 目視できない範囲。時間帯によって増減する。', en: 'Blind spot — what you cannot see. It grows and shrinks with the time of day.' },
+      ],
+    },
+    {
+      type: 'grid',
+      titleJa: '巡回で「情報資産」も見る',
+      titleEn: 'Patrol Sees Information Assets Too',
+      lead: '物と人だけを見て歩くと、Asset の半分を見落とします。',
+      leadEn: 'Walk looking only for people and property and you miss half of Asset.',
+      cols: 2,
+      items: [
+        { ja: '無人の席に置かれたIDカード・鍵', en: 'ID cards or keys left at an unattended desk' },
+        { ja: 'ホワイトボードに残った案件名・金額', en: 'Project names or figures left on a whiteboard' },
+        { ja: '複合機のトレイに残った出力物', en: 'Printouts left in the copier tray' },
+        { ja: '会議室に残された配布資料', en: 'Handouts left behind in a meeting room' },
+        { ja: 'サーバ室・書庫の施錠状態', en: 'Lock status of server rooms and archives' },
+        { ja: '共連れの痕跡、開放されたままの扉', en: 'Signs of tailgating; doors propped open' },
+      ],
+    },
+    {
+      type: 'quote',
+      titleJa: '巡回記録 ― 一般原則',
+      titleEn: 'Patrol Records — general principles',
+      quoteJa: '記録のない巡回は、していないのと同じ。\n「異常なし」も、記録すべき結果です。',
+      quoteEn: 'A patrol without a record is a patrol that did not happen.\n"Nothing to report" is itself a result worth recording.',
+      quoteSize: 19,
+      quoteEnSize: 12.5,
+      note: '様式・頻度・立寄点の数・記録の保存方法は、サイトごとに異なります。必ず各現場の警備指令書によってください。',
+      noteEn: 'Formats, frequency, number of checkpoints and retention all differ by site. Always follow the post orders for your own site.',
+    },
+    {
+      type: 'grid',
+      titleJa: 'TTX② 巡回中、この場面に出会ったら',
+      titleEn: 'TTX ② — You Encounter This on Patrol',
+      lead: '班で3つ選んでください。次のスライドの4つの問いに答えます。',
+      leadEn: 'Pick three as a group. You will answer the four questions on the next slide.',
+      cols: 2,
+      items: [
+        { n: 'A', ja: '無人の席にIDカードが置かれている。', en: 'An ID card is lying on an unattended desk.' },
+        { n: 'B', ja: '会議室のホワイトボードに、案件名と金額が消されずに残っている。', en: 'A whiteboard still shows a project name and a figure.' },
+        { n: 'C', ja: '非常口の前に段ボールが3箱積まれている。', en: 'Three boxes are stacked in front of an emergency exit.' },
+        { n: 'D', ja: 'サーバ室の扉が半開きになっている。', en: 'The server room door is standing half open.' },
+        { n: 'E', ja: '来訪者バッジをつけていない人物が執務フロアを歩いている。', en: 'Someone without a visitor badge is walking the office floor.' },
+        { n: 'F', ja: '外周フェンスの一部が破損している。', en: 'A section of the perimeter fence is damaged.' },
+      ],
+    },
+    {
+      type: 'rows',
+      titleJa: 'TTX② 4つの問い',
+      titleEn: 'TTX ② — The Four Questions',
+      lead: '進め方：班で3場面 → 4問に回答（20分） → 班発表（15分）',
+      leadEn: 'Format: three scenes per group → answer all four questions (20 min) → present (15 min).',
+      rows: [
+        { ja: '何に注意するか ― これは People / Asset / Reputation のどのリスクか。', en: 'What is at stake — is this a People, Asset, or Reputation risk?' },
+        { ja: 'どこを見るか ― この場面で、ほかに確認すべき点はどこか。', en: 'Where do you look — what else should you check in this scene?' },
+        { ja: 'どう巡回するか ― 次の巡回で、何を変えるか。', en: 'How do you patrol — what changes on your next round?' },
+        { ja: 'どう報告するか ― 報告するか、誰に、何を。事実と評価を分けて。', en: 'How do you report — whether, to whom, and what. Separate fact from assessment.' },
+      ],
+    },
+    {
+      type: 'close',
+      titleJa: 'TTX② 講評の観点',
+      titleEn: 'TTX ② — What We Are Looking For',
+      rows: [
+        { ja: 'リスクを People / Asset / Reputation で言い分けられたか。', en: 'Could you name the risk as People, Asset, or Reputation?' },
+        { ja: '「その場の処置」と「報告」を分けて考えられたか。', en: 'Did you separate what you do on the spot from what you report?' },
+        { ja: '次の巡回への反映 ― 設計変更まで踏み込めたか。', en: 'Did you go as far as changing the design of the next patrol?' },
+        { ja: '報告の文面で、事実と評価が混ざっていなかったか。', en: 'In your report wording, did fact and assessment stay separate?' },
+      ],
+      next: '次は第5時限 ― 相手が人であるときの技術、De-escalation。',
+      nextEn: 'Next, Period 5 — the skill for when the risk is a person: de-escalation.',
+    },
+  ],
+};
+
+// ── 第5時限 業務別教育2「その他必要な知識及び技能」De-escalation ─────────
+const p5 = {
+  file: '04_5限_De-escalation.pptx',
+  footJa: '第5時限｜業務別教育2 その他当該警備業務を適正に実施するため必要な知識及び技能',
+  footEn: 'Period 5 | Task-Specific Training 2 — De-escalation',
+  slides: [
+    {
+      type: 'title',
+      kicker: '第5時限　11:30 – 12:30　業務別教育2',
+      kickerEn: 'Period 5 — Task-Specific Training 2',
+      titleJa: 'De-escalation\n― 対人対応の知識及び技能',
+      titleEn: 'De-escalation — Interpersonal Response Skills',
+      metaJa: COMMON_META_JA,
+      metaEn: COMMON_META_EN,
+    },
+    {
+      type: 'quote',
+      titleJa: 'De-escalation とは',
+      titleEn: 'What De-escalation Is',
+      quoteJa: '有形力を使わずに、緊張を下げる技術。\n目的は「勝つこと」ではなく、「収めること」。',
+      quoteEn: 'The skill of lowering tension without resorting to physical force.\nThe objective is not to win the exchange — it is to end it safely.',
+      quoteSize: 19,
+      quoteEnSize: 12.5,
+      note: '議論に勝った警備員は、たいてい状況に負けています。相手を言い負かした瞬間、退路がなくなります。',
+      noteEn: 'A guard who wins the argument has usually lost the situation. The moment you defeat someone verbally, they have nowhere to go.',
+    },
+    {
+      type: 'cards',
+      titleJa: '距離・姿勢・声',
+      titleEn: 'Space, Stance, Voice',
+      cols: 3,
+      cards: [
+        {
+          n: '1', h: '距離', hEn: 'Space',
+          b: '手が届かない距離を保つ（目安1.5〜2m）。\n距離は安全であり、同時に相手への敬意でもある。',
+          bEn: 'Stay beyond arm\'s reach — roughly 1.5 to 2 metres. Distance is safety, and it also reads as respect.',
+        },
+        {
+          n: '2', h: '姿勢', hEn: 'Stance', accent: true,
+          b: '正対しない。半身で斜めに立つ。\n手は相手から見える位置に。腕を組まない。',
+          bEn: 'Do not square up — stand at an angle. Keep your hands visible. Never fold your arms.',
+        },
+        {
+          n: '3', h: '声', hEn: 'Voice',
+          b: 'トーン・速度・音量を「下げる」。\n相手より大きな声を出さない。沈黙を怖がらない。',
+          bEn: 'Lower your tone, pace and volume. Never out-shout them. Do not be afraid of silence.',
+        },
+      ],
+    },
+    {
+      type: 'rows',
+      titleJa: '傾聴と、逃げ道',
+      titleEn: 'Listening, and Leaving a Way Out',
+      rows: [
+        { ja: '最後まで聞く。遮らない。相手は「聞かれていない」ことに怒っていることが多い。', en: 'Listen to the end without interrupting. Often the anger is about not being heard.' },
+        { ja: '要約して返す ―「◯◯ということですね」。承認は同意ではない。', en: 'Reflect it back: "So the issue is X." Acknowledging is not agreeing.' },
+        { ja: '逃げ道（面子）を残す。引き下がっても恥をかかない形を用意する。', en: 'Leave a face-saving exit — a way to back down without humiliation.' },
+        { ja: '選択肢を2つ示す。選べる人は、戦う必要がなくなる。', en: 'Offer two options. A person with a choice no longer needs to fight.' },
+        { ja: '時間を味方にする。急がない。時間はこちらの武器。', en: 'Let time work for you. Do not rush — time is your tactic.', small: true },
+      ],
+    },
+    {
+      type: 'grid',
+      titleJa: 'やってはいけない ― 緊張を上げる行動',
+      titleEn: 'What Not To Do — behaviours that raise the temperature',
+      lead: 'いずれも共通して、相手の面子を潰します。',
+      leadEn: 'What these all share: they take away the other person\'s dignity.',
+      cols: 2,
+      items: [
+        { ja: '命令口調 ―「下がってください」を繰り返す', en: 'Commanding tone — repeating "step back"' },
+        { ja: '指差し・腕組み・ため息・薄笑い', en: 'Pointing, folded arms, sighing, smirking' },
+        { ja: '「落ち着いてください」', en: '"Please calm down"' },
+        { ja: '大勢で囲む・背後に回る', en: 'Surrounding them, or moving behind them' },
+        { ja: '「規則ですから」で会話を打ち切る', en: 'Ending the conversation with "those are the rules"' },
+        { ja: '自分の意見や会社の見解を口にする', en: 'Offering your own opinion, or the company\'s position' },
+      ],
+    },
+    {
+      type: 'rows',
+      titleJa: '退き際の判断 ― De-escalation は万能ではない',
+      titleEn: 'Knowing When to Stop — de-escalation is not universal',
+      lead: '効いていない兆候が出たら、続けるのではなく切り替えます。',
+      leadEn: 'When these signs appear, switch tactics rather than persisting.',
+      rows: [
+        { ja: '兆候：声が大きくなり続ける／同じ言葉を繰り返す', en: 'Signs: volume keeps climbing; the same phrase repeats' },
+        { ja: '兆候：距離を詰めてくる／持ち物を握りしめる／視線を外さない', en: 'Signs: closing distance; gripping an object; fixed stare' },
+        { ja: 'そのときの順序：離脱 → 応援要請 → 通報', en: 'The sequence: disengage, call for backup, then report to police' },
+        { ja: '引くことは負けではありません。引くのも技術です。', en: 'Withdrawing is not losing. Withdrawing is a skill.' },
+      ],
+    },
+    {
+      type: 'grid',
+      titleJa: 'ソーシャルエンジニアリング ― 5つの典型手口',
+      titleEn: 'Social Engineering — five classic approaches',
+      lead: 'いずれも「手続きを飛ばさせる」ことを狙っています。',
+      leadEn: 'Every one of them aims to make you skip a procedure.',
+      cols: 2,
+      items: [
+        { ja: '権威 ―「役員に呼ばれている」', en: 'Authority — "the director is expecting me"' },
+        { ja: '緊急 ―「今すぐ通さないと損害が出る」', en: 'Urgency — "if you delay me it will cost the company"' },
+        { ja: '親近感 ―「前も通してもらった」', en: 'Familiarity — "they let me through last time"' },
+        { ja: '同情 ―「雨で困っている」「体調が悪い」', en: 'Sympathy — "I am soaked" / "I am unwell"' },
+        { ja: '共連れ ― 荷物を抱えて後ろにつく', en: 'Tailgating — following behind with full hands' },
+        { ja: '対処は共通：手続きに戻す。「確認します」は失礼ではない。', en: 'One answer to all: return to procedure. "Let me verify" is not rude.' },
+      ],
+    },
+    {
+      type: 'two',
+      titleJa: '元従業員・報道関係者',
+      titleEn: 'Former Employees and the Press',
+      left: {
+        h: '元従業員', hEn: 'Former employees',
+        items: [
+          { ja: '退職した時点で「来訪者」', en: 'Once they have left, they are a visitor' },
+          { ja: '入館手続きに戻す。例外を作らない', en: 'Return them to the visitor process; make no exceptions' },
+          { ja: '感情に反応しない。経緯に立ち入らない', en: 'Do not react to emotion, or engage with the history' },
+          { ja: '人事へ取り次ぐ', en: 'Refer them to HR' },
+        ],
+      },
+      right: {
+        h: '報道関係者', hEn: 'Press and media',
+        items: [
+          { ja: '敷地内では取材に応じない', en: 'No interviews on company property' },
+          { ja: '広報へ取り次ぐ。窓口を一本化する', en: 'Refer to Communications; keep a single channel' },
+          { ja: '「お答えできる立場にありません」', en: '"I am not in a position to comment"' },
+          { ja: '撮影されている前提で振る舞う', en: 'Assume you are being filmed' },
+        ],
+      },
+      note: '共通原則：自分の意見を言わない。会社の見解をその場で作らない。',
+      noteEn: 'The shared rule: never give your own opinion, and never invent the company\'s position on the spot.',
+    },
+    {
+      type: 'ttx',
+      titleJa: 'TTX③ この台詞のうち、どれを選びますか',
+      titleEn: 'TTX ③ — Which of These Would You Say?',
+      scenarioJa: '来訪者が「役員に呼ばれている、急いでいる」と述べ、入館手続きを拒んでいる。声はやや大きく、周囲の来訪者が振り返っている。',
+      scenarioEn: 'A visitor says they are expected by an executive and is in a hurry, refusing the sign-in process. Their voice is raised, and other visitors are turning to look.',
+      questions: [
+        { ja: 'A「規則ですので通せません」　B「お急ぎのところ恐れ入ります。すぐ確認いたしますので、こちらでお待ちいただけますか」', en: 'A: "Rules are rules — I cannot let you through."　B: "I am sorry you are pressed for time. I will check right away — could you wait here?"' },
+        { ja: 'C「落ち着いてください」　D「どちらの役員でしょうか。お名前を伺えれば、こちらからお繋ぎします」', en: 'C: "Please calm down."　D: "Which executive is it? If you give me the name I will connect you myself."' },
+        { ja: 'どれを選ぶか。そして、ほかはなぜ選ばないのか。', en: 'Which do you choose — and why not the others?' },
+        { ja: 'それでも相手が声を荒げたら、次に何と言うか。', en: 'If they raise their voice anyway, what do you say next?' },
+      ],
+      inject: '相手が「もういい」と言って、ゲートに向かって歩き出した。',
+      injectEn: 'They say "forget it" and start walking toward the gate.',
+    },
+    {
+      type: 'close',
+      titleJa: 'TTX③ 講評の観点',
+      titleEn: 'TTX ③ — What We Are Looking For',
+      rows: [
+        { ja: '選んだ台詞は「拒否」ではなく「手続きへの誘導」になっているか。', en: 'Does your line redirect to a process, rather than simply refuse?' },
+        { ja: '有形力（進路に立つ等）に頼っていないか。', en: 'Are you leaning on physical means — stepping into their path?' },
+        { ja: '逃げ道（面子）を残したか。選択肢を示したか。', en: 'Did you leave a face-saving exit? Did you offer a choice?' },
+        { ja: '退き際の基準を、自分の言葉で言えるか。', en: 'Can you state, in your own words, when you would disengage?' },
+      ],
+      next: '午後は他講師が担当します。第9時限で再開 ― 通報と現場保存。',
+      nextEn: 'Other instructors take the afternoon. We resume at Period 9 — reporting and scene preservation.',
+    },
+  ],
+};
+
+module.exports = { p4, p5 };
