@@ -286,3 +286,175 @@ function close(pres, d, ctx) {
 }
 
 module.exports = { title, rows, cards, quote, two, grid, ttx, close };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Dense layouts matching the VRM corporate deck format:
+// learning objective band → numbered topics with sub-bullets → Site SOP → sources
+// ─────────────────────────────────────────────────────────────────────────────
+
+const DENSE = {
+  titleY: 0.42, titleH: 0.84,
+  objY: 1.30, objH: 0.58,
+  bodyTop: 1.98, bodyBot: 6.40,
+  sopY: 6.46, sopH: 0.34,
+  srcY: 6.86, srcH: 0.26,
+};
+
+function headerSm(slide, titleJa, titleEn, blockLabel) {
+  slide.addText([
+    ja(titleJa, { fontSize: 23, bold: true, color: C.navy, breakLine: true }),
+    en(titleEn, { fontSize: 11, color: C.teal }),
+  ], { x: G.M, y: DENSE.titleY, w: G.titleW - 0.9, h: DENSE.titleH, valign: 'top', margin: 0, lineSpacingMultiple: 0.94 });
+  if (blockLabel) {
+    slide.addShape('roundRect', {
+      x: G.logo.x - 1.18, y: DENSE.titleY + 0.06, w: 1.02, h: 0.34, rectRadius: 0.05,
+      fill: { color: C.navy }, line: { type: 'none' },
+    });
+    slide.addText(blockLabel, {
+      x: G.logo.x - 1.18, y: DENSE.titleY + 0.06, w: 1.02, h: 0.34,
+      align: 'center', valign: 'middle', margin: 0,
+      fontFace: F.en, fontSize: 11, bold: true, color: C.white,
+    });
+  }
+}
+
+function objectiveBand(slide, objJa, objEn) {
+  slide.addShape('roundRect', {
+    x: G.M, y: DENSE.objY, w: G.CW, h: DENSE.objH, rectRadius: 0.04,
+    fill: { color: C.tintTl }, line: { type: 'none' },
+  });
+  slide.addText([
+    ja('身につくこと　', { fontSize: 9.5, bold: true, color: C.tealDk }),
+    en('What You\'ll Learn　', { fontSize: 8, color: C.tealDk, italic: false }),
+    ja(objJa, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
+    en(objEn, { fontSize: 8.5, color: C.muted }),
+  ], { x: G.M + 0.26, y: DENSE.objY + 0.05, w: G.CW - 0.52, h: DENSE.objH - 0.1, valign: 'middle', margin: 0, lineSpacingMultiple: 0.9 });
+}
+
+function sopBand(slide, sopJa, sopEn) {
+  if (!sopJa) return;
+  slide.addText([
+    ja('Site SOP優先　', { fontSize: 9, bold: true, color: C.tealDk }),
+    ja(sopJa, { fontSize: 9, bold: false, color: C.ink, breakLine: true }),
+    en(sopEn || '', { fontSize: 7.5, color: C.muted }),
+  ], { x: G.M, y: DENSE.sopY, w: G.CW, h: DENSE.sopH, valign: 'top', margin: 0, lineSpacingMultiple: 0.88 });
+}
+
+function srcLine(slide, sources) {
+  if (!sources) return;
+  slide.addText([
+    ja('ソース　', { fontSize: 7.5, bold: true, color: C.line }),
+    ja(sources, { fontSize: 7.5, bold: false, color: C.muted }),
+  ], { x: G.M, y: DENSE.srcY, w: G.CW - 1.1, h: DENSE.srcH, valign: 'top', margin: 0 });
+}
+
+// Numbered topics, each with sub-bullets. cols 1-3, rows as needed.
+function topics(pres, d, ctx) {
+  const s = base(pres);
+  headerSm(s, d.titleJa, d.titleEn, d.block);
+  if (d.obj) objectiveBand(s, d.obj, d.objEn);
+
+  const list = d.topics;
+  const cols = d.cols || 2;
+  const rowsN = Math.ceil(list.length / cols);
+  const top = d.obj ? DENSE.bodyTop : DENSE.objY;
+  const gx = 0.28, gy = 0.22;
+  const cw = (G.CW - gx * (cols - 1)) / cols;
+  const ch = ((DENSE.bodyBot - top) - gy * (rowsN - 1)) / rowsN;
+
+  list.forEach((t, i) => {
+    const r = Math.floor(i / cols), col = i % cols;
+    const x = G.M + col * (cw + gx);
+    const y = top + r * (ch + gy);
+    s.addShape('roundRect', {
+      x, y, w: cw, h: ch, rectRadius: 0.04,
+      fill: { color: i % 2 === 0 ? C.tint : 'F7FAFC' }, line: { type: 'none' },
+    });
+    badge(s, x + 0.2, y + 0.18, t.n != null ? t.n : i + 1, { size: 0.34, fill: C.navy });
+    s.addText([
+      ja(t.h, { fontSize: 12, bold: true, color: C.navy, breakLine: true }),
+      en(t.hEn, { fontSize: 8, color: C.teal }),
+    ], { x: x + 0.62, y: y + 0.14, w: cw - 0.84, h: 0.56, valign: 'top', margin: 0, lineSpacingMultiple: 0.88 });
+
+    const runs = [];
+    t.b.forEach((bl, k) => {
+      const last = k === t.b.length - 1;
+      runs.push(ja('・' + bl.ja, { fontSize: 9.5, bold: false, color: C.ink, breakLine: true }));
+      runs.push(en('　' + bl.en, { fontSize: 7.5, color: C.muted, breakLine: !last }));
+    });
+    s.addText(runs, {
+      x: x + 0.24, y: y + 0.74, w: cw - 0.48, h: ch - 0.9, valign: 'top', margin: 0,
+      paraSpaceAfter: 2, lineSpacingMultiple: 0.9,
+    });
+  });
+
+  sopBand(s, d.sop, d.sopEn);
+  srcLine(s, d.sources);
+  footer(s, ctx.footJa, ctx.footEn, ctx.n);
+  return s;
+}
+
+// VRM-style case slide: scenario → question → points to consider → inject
+function caseSlide(pres, d, ctx) {
+  const s = base(pres);
+  headerSm(s, d.titleJa, d.titleEn, d.block || 'CASE');
+
+  const sy = DENSE.objY;
+  // Size the scenario panel to its text rather than leaving a fixed hole.
+  const jaLines = Math.ceil(d.scenarioJa.length / 74);
+  const enLines = Math.ceil(d.scenarioEn.length / 150);
+  const sh = d.scenarioH ||
+    Math.min(2.20, Math.max(1.05, 0.40 + jaLines * 0.21 + enLines * 0.135 + 0.14));
+  s.addShape('roundRect', { x: G.M, y: sy, w: G.CW, h: sh, rectRadius: 0.04, fill: { color: C.navy }, line: { type: 'none' } });
+  s.addText([
+    ja('シナリオ　', { fontSize: 9.5, bold: true, color: C.teal }),
+    en('SCENARIO', { fontSize: 8, color: C.teal, italic: false, breakLine: true }),
+    ja(d.scenarioJa, { fontSize: 11.5, bold: true, color: C.white, breakLine: true }),
+    en(d.scenarioEn, { fontSize: 8, color: '9FD8CD' }),
+  ], { x: G.M + 0.34, y: sy + 0.14, w: G.CW - 0.68, h: sh - 0.28, valign: 'top', margin: 0, lineSpacingMultiple: 0.92 });
+
+  const qy = sy + sh + 0.16;
+  s.addText([
+    ja('問い　', { fontSize: 10, bold: true, color: C.tealDk }),
+    ja(d.questionJa, { fontSize: 12.5, bold: true, color: C.navy, breakLine: true }),
+    en(d.questionEn, { fontSize: 8.5, color: C.muted }),
+  ], { x: G.M, y: qy, w: G.CW, h: 0.62, valign: 'top', margin: 0, lineSpacingMultiple: 0.9 });
+
+  const py = qy + 0.68;
+  const pts = d.points;
+  const cols = 2;
+  const rowsN = Math.ceil(pts.length / cols);
+  const gx = 0.28, gy = 0.12;
+  const cw = (G.CW - gx) / cols;
+  const bot = d.inject ? DENSE.sopY - 0.62 : DENSE.sopY - 0.06;
+  const ch = ((bot - py) - gy * (rowsN - 1)) / rowsN;
+  pts.forEach((p, i) => {
+    const r = Math.floor(i / cols), col = i % cols;
+    const x = G.M + col * (cw + gx);
+    const y = py + r * (ch + gy);
+    s.addShape('roundRect', { x, y, w: cw, h: ch, rectRadius: 0.04, fill: { color: C.tint }, line: { type: 'none' } });
+    badge(s, x + 0.18, y + (ch - 0.32) / 2, i + 1, { size: 0.32, fill: C.teal });
+    s.addText([
+      ja(p.ja, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
+      en(p.en, { fontSize: 8, color: C.muted }),
+    ], { x: x + 0.6, y: y + 0.06, w: cw - 0.8, h: ch - 0.12, valign: 'middle', margin: 0, lineSpacingMultiple: 0.88 });
+  });
+
+  if (d.inject) {
+    const iy = DENSE.sopY - 0.56;
+    s.addShape('roundRect', { x: G.M, y: iy, w: G.CW, h: 0.5, rectRadius: 0.04, fill: { color: C.tintTl }, line: { type: 'none' } });
+    s.addText([
+      ja('追加付与　', { fontSize: 8.5, bold: true, color: C.tealDk }),
+      ja(d.inject, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
+      en(d.injectEn, { fontSize: 7.5, color: C.muted }),
+    ], { x: G.M + 0.26, y: iy + 0.04, w: G.CW - 0.52, h: 0.42, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
+  }
+
+  sopBand(s, d.sop, d.sopEn);
+  srcLine(s, d.sources);
+  footer(s, ctx.footJa, ctx.footEn, ctx.n);
+  return s;
+}
+
+module.exports.topics = topics;
+module.exports.caseSlide = caseSlide;
