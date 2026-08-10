@@ -31,7 +31,7 @@ const G = {
   get titleW() { return G.logo.x - G.M - 0.35; },
   bodyTop: 1.78,
   bodyBot: 6.82,
-  footY: 6.98,
+  footY: 7.10,
 };
 
 // ── Logo ────────────────────────────────────────────────────────────────────
@@ -82,11 +82,13 @@ function addLogo(slide, onDark) {
 
 // ── Bilingual text helpers ──────────────────────────────────────────────────
 const ja = (t, o = {}) => ({ text: t, options: Object.assign({ fontFace: F.ja, color: C.ink }, o) });
-const en = (t, o = {}) => ({ text: t, options: Object.assign({ fontFace: F.en, color: C.muted, italic: true }, o) });
+// English is a primary language in these decks, not a gloss: same ink colour,
+// upright, and close to the Japanese in size. Only chrome (footer, sources) is muted.
+const en = (t, o = {}) => ({ text: t, options: Object.assign({ fontFace: F.en, color: C.ink, italic: false }, o) });
 
 // A JA line with its EN line underneath, inside one text box.
 function bi(slide, jaText, enText, o) {
-  const { x, y, w, h, jaSize = 15, enSize = 10.5, jaColor = C.ink, enColor = C.muted, bold = true, align = 'left' } = o;
+  const { x, y, w, h, jaSize = 15, enSize = 13, jaColor = C.ink, enColor = C.ink, bold = true, align = 'left' } = o;
   slide.addText([
     ja(jaText, { fontSize: jaSize, bold, color: jaColor, breakLine: true }),
     en(enText, { fontSize: enSize, color: enColor }),
@@ -104,14 +106,14 @@ function base(pres, { dark = false } = {}) {
 function header(slide, titleJa, titleEn) {
   slide.addText([
     ja(titleJa, { fontSize: 27, bold: true, color: C.navy, breakLine: true }),
-    en(titleEn, { fontSize: 12.5, color: C.teal }),
+    en(titleEn, { fontSize: 13.5, color: C.teal }),
   ], { x: G.M, y: G.titleY, w: G.titleW, h: 1.05, valign: 'top', margin: 0, lineSpacingMultiple: 0.94 });
 }
 
 function footer(slide, leftJa, leftEn, num) {
   slide.addText([
     ja(leftJa + '  ', { fontSize: 9, color: C.muted, bold: false }),
-    en(leftEn, { fontSize: 8.5, color: C.line }),
+    en(leftEn, { fontSize: 8.5, color: C.line, italic: true }),
   ], { x: G.M, y: G.footY, w: 9.6, h: 0.32, valign: 'middle', margin: 0 });
   slide.addText(String(num), {
     x: G.W - G.M - 1.0, y: G.footY, w: 1.0, h: 0.32,
