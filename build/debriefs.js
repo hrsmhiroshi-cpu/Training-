@@ -3,6 +3,7 @@
 // Model answers, numbered to match the questions on the case slide.
 
 const SOP_LABEL = '注記';
+const SRC_EMG_REF = '消防法、総務省消防庁、警察庁「警備員教育」';
 const SOP = '模範解答は判断の型を示すものです。実際の手順は各現場のSite SOPと警備指令書が優先します。';
 const SOP_EN = 'These answers show a pattern of reasoning. The Site SOP and post orders always take precedence.';
 
@@ -152,6 +153,22 @@ const D = {
     splitEn: 'May you search? Ask the "yes" group for their basis, and the "no" group what they tell the crew.',
   },
 
+  'CASE 9-C': {
+    titleJa: 'TTX 9-C 模範解答 ― 通報の型', titleEn: 'TTX 9-C — Model Answers: How the Call Runs',
+    sources: SRC_EMG_REF,
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '最初の一言', key: true, a: '「救急です」。種別を最初に言う。出動する部隊が変わるため、場所より先。', aEn: '"Ambulance." Say the type first — it decides which crew is dispatched, so it comes before the location.' },
+      { q: '伝える順序', a: '救急です → 場所（住所・階・目印） → 症状（反応なし・呼吸の有無） → 人数 → 自分の氏名と折り返し番号。', aEn: 'Ambulance, then location, then condition (unresponsive, breathing or not), then how many, then your name and call-back.' },
+      { q: '省いてよい項目', a: '年齢と顔色は最初に言わなくてよい。聞かれてから答える。省けないのは場所と呼吸の有無。', aEn: 'Age and skin colour can wait until asked. What cannot wait: the location, and whether they are breathing.' },
+      { q: '社員2名への依頼', key: true, a: '1名にAEDを持ってくるよう指名、もう1名に1階での誘導を指名。「誰か」ではなく人を指す。', aEn: 'Name one to fetch the AED and one to meet the crew downstairs. Point at a person; never say "someone".' },
+    ],
+    inject1: { q: '「呼吸はしていますか」', key: true, a: '「胸の動きは見えますが、確信が持てません」。分からないことを分からないと言う。推測で断定しない。', aEn: '"I can see chest movement but I am not certain." Say what you do not know. Never state a guess as fact.' },
+    inject2: { q: '本人が目を開けた', a: '通報を切らない。「意識が戻りました」と続報を入れ、指示を仰ぐ。自己判断で要請を取り消さない。', aEn: 'Do not hang up. Update them: "he has regained consciousness," and follow their instruction. Do not cancel the ambulance yourself.' },
+    split: '箇条書きの順に読み上げてしまう班が必ず出る。通報は「種別 → 場所 → 状態」で、メモの順とは違う。',
+    splitEn: 'Some groups will just read the list top to bottom. The call order is type, location, condition — not the order of your notes.',
+  },
+
   'CASE 9-B': {
     titleJa: 'TTX 9-B 模範解答', titleEn: 'TTX 9-B — Model Answers',
     sources: '消防法、総務省消防庁、警察庁「警備員教育」',
@@ -174,7 +191,7 @@ const D = {
     sop: '人員配置、通報の判断者、保全依頼の宛先は現場ごとに異なる。緊急連絡体制表による。',
     sopEn: 'Deployment, who calls, and who to ask for preservation differ by site.',
     answers: [
-      { q: '最初の60秒。2名の配置', key: true, a: '地区表示を読む→一報→現場確認。単独行動の回避と受信機の常駐は両立しない。選んだ方を説明する。', aEn: 'Read the zone, report, then verify. Not going alone and manning the panel cannot both hold — justify which you chose.' },
+      { q: '最初の60秒。2名の配置', key: true, a: '①地区表示を確認 ②上長へ一報 ③1名は受信機に残って連絡と記録、1名が3階へ確認に向かう。単独になるため所在を無線で共有し続ける。', aEn: '1) Read the zone. 2) Report to your supervisor. 3) One stays at the panel to log and communicate; one verifies the third floor — alone, so keep them on the radio.' },
       { q: '通報するか。110か119か', a: '119番。発報は火災の確定ではないが、防火戸閉鎖まで進んでいる。不正解錠は後から110番。', aEn: 'Call the fire service. The alarm is not proof of fire, but the doors have closed. The unauthorised entry goes to police later.' },
       { q: '保全すべきもの。誰に依頼するか', key: true, a: '退職者カードの解錠ログと3階カメラ画像。管理権者不在なら緊急連絡体制の次順位者へ。', aEn: 'The leaver-card unlock log and the third-floor footage. With the authority away, go to the next contact.' },
       { q: '何を後回しにするか', a: '不正解錠の追跡。人命と火災対応が先。捨てた判断と理由を記録に残す。', aEn: 'Pursuing the unauthorised entry. Life and fire come first — and record what you dropped, and why.' },
