@@ -459,52 +459,56 @@ function caseSlide(pres, d, ctx) {
 module.exports.topics = topics;
 module.exports.caseSlide = caseSlide;
 
-// 9) Debrief — model answers for a case slide (論点 → 押さえるべきこと)
+// 9) Debrief — answers keyed to the SAME numbers as the case slide's questions
 function debrief(pres, d, ctx) {
   const s = base(pres);
   headerSm(s, d.titleJa, d.titleEn, d.block || 'DEBRIEF');
 
-  let top = DENSE.objY;
-  if (d.lead) {
-    s.addText([
-      ja('狙い　', { fontSize: 10, bold: true, color: C.tealDk }),
-      ja(d.lead, { fontSize: 11.5, bold: true, color: C.navy, breakLine: true }),
-      en(d.leadEn, { fontSize: 8.5, color: C.muted }),
-    ], { x: G.M, y: top, w: G.CW, h: 0.58, valign: 'top', margin: 0, lineSpacingMultiple: 0.9 });
-    top += 0.64;
-  }
+  const injects = [d.inject1, d.inject2].filter(Boolean);
+  const splitH = d.split ? 0.50 : 0;
+  const injH = injects.length ? injects.length * 0.46 + (injects.length - 1) * 0.08 : 0;
+  const tailH = (splitH ? splitH + 0.12 : 0) + (injH ? injH + 0.12 : 0);
 
-  const items = d.items;
-  const cols = 2;
-  const rowsN = Math.ceil(items.length / cols);
-  const bot = d.split ? DENSE.sopY - 0.66 : DENSE.sopY - 0.06;
-  const gx = 0.28, gy = 0.14;
-  const cw = (G.CW - gx) / cols;
-  const ch = ((bot - top) - gy * (rowsN - 1)) / rowsN;
+  const top = DENSE.objY;
+  const bot = DENSE.sopY - 0.10 - tailH;
+  const ans = d.answers;
+  const gap = 0.11;
+  const rh = (bot - top - gap * (ans.length - 1)) / ans.length;
 
-  items.forEach((it, i) => {
-    const r = Math.floor(i / cols), col = i % cols;
-    const x = G.M + col * (cw + gx);
-    const y = top + r * (ch + gy);
+  ans.forEach((a, i) => {
+    const y = top + i * (rh + gap);
     s.addShape('roundRect', {
-      x, y, w: cw, h: ch, rectRadius: 0.04,
-      fill: { color: it.key ? C.tintTl : C.tint }, line: { type: 'none' },
+      x: G.M, y, w: G.CW, h: rh, rectRadius: 0.04,
+      fill: { color: a.key ? C.tintTl : C.tint }, line: { type: 'none' },
     });
+    badge(s, G.M + 0.22, y + (rh - 0.38) / 2, i + 1, { size: 0.38, fill: C.teal });
     s.addText([
-      ja(it.h, { fontSize: 10.5, bold: true, color: it.key ? C.tealDk : C.navy, breakLine: true }),
-      ja(it.ja, { fontSize: 10.5, bold: true, color: C.ink, breakLine: true }),
-      en(it.en, { fontSize: 8, color: C.muted }),
-    ], { x: x + 0.26, y: y + 0.1, w: cw - 0.52, h: ch - 0.2, valign: 'top', margin: 0, lineSpacingMultiple: 0.9 });
+      ja('問' + (i + 1) + '　' + a.q, { fontSize: 9, bold: false, color: C.muted, breakLine: true }),
+      ja(a.a, { fontSize: 12, bold: true, color: C.ink, breakLine: true }),
+      en(a.aEn, { fontSize: 8, color: C.muted }),
+    ], { x: G.M + 0.70, y: y + 0.07, w: G.CW - 0.96, h: rh - 0.14, valign: 'middle', margin: 0, lineSpacingMultiple: 0.88 });
   });
 
-  if (d.split) {
-    const sy2 = DENSE.sopY - 0.60;
-    s.addShape('roundRect', { x: G.M, y: sy2, w: G.CW, h: 0.54, rectRadius: 0.04, fill: { color: C.navy }, line: { type: 'none' } });
+  let cy = top + ans.length * (rh + gap) + 0.01;
+  injects.forEach((it, i) => {
+    const y = cy + i * (0.46 + 0.08);
+    s.addShape('roundRect', { x: G.M, y, w: G.CW, h: 0.46, rectRadius: 0.04, fill: { color: 'EEF6FA' }, line: { type: 'none' } });
     s.addText([
-      ja('割れる論点　', { fontSize: 9.5, bold: true, color: C.teal }),
-      ja(d.split, { fontSize: 11, bold: true, color: C.white, breakLine: true }),
-      en(d.splitEn, { fontSize: 8, color: '9FD8CD' }),
-    ], { x: G.M + 0.26, y: sy2 + 0.05, w: G.CW - 0.52, h: 0.44, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
+      ja('追加付与' + (i === 0 ? '①' : '②') + '　', { fontSize: 8.5, bold: true, color: C.tealDk }),
+      ja(it.q + '　→　', { fontSize: 8.5, bold: false, color: C.muted }),
+      ja(it.a, { fontSize: 11, bold: true, color: C.ink, breakLine: true }),
+      en(it.aEn, { fontSize: 7.5, color: C.muted }),
+    ], { x: G.M + 0.24, y: y + 0.03, w: G.CW - 0.48, h: 0.40, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
+  });
+  if (injects.length) cy += injH + 0.12;
+
+  if (d.split) {
+    s.addShape('roundRect', { x: G.M, y: cy, w: G.CW, h: splitH, rectRadius: 0.04, fill: { color: C.navy }, line: { type: 'none' } });
+    s.addText([
+      ja('割れる論点　', { fontSize: 9, bold: true, color: C.teal }),
+      ja(d.split, { fontSize: 10.5, bold: true, color: C.white, breakLine: true }),
+      en(d.splitEn, { fontSize: 7.5, color: '9FD8CD' }),
+    ], { x: G.M + 0.24, y: cy + 0.03, w: G.CW - 0.48, h: splitH - 0.06, valign: 'middle', margin: 0, lineSpacingMultiple: 0.86 });
   }
 
   sopBand(s, d.sop, d.sopEn);
