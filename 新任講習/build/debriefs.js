@@ -324,6 +324,40 @@ const D = {
     splitEn: 'How do they weigh the missing entry log? Make sure they land on the absence of notification being the key fact.',
   },
 
+  // ── 第13時限 ──────────────────────────────────────────────────────────────
+  'CASE 13-A': {
+    titleJa: 'TTX 13-A 模範解答', titleEn: 'TTX 13-A — Model Answers',
+    sources: '個人情報保護法、経済産業省「秘密情報の保護ハンドブック」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: 'その場での対応', a: '会議室を施錠する。端末はSite SOPに従い保管または現場で保護。ホワイトボードは消さない、撮影しない。', aEn: 'Lock the room. Secure the laptop per the Site SOP. Do not erase or photograph the whiteboard.' },
+      { q: '前直の引継ぎ漏れの扱い', key: true, a: '責めない。事実として両方を残す。「前直引継ぎ：異常なし／本職発見時：会議室未施錠、端末1台放置」。', aEn: 'Do not blame. Record both: "Previous shift: nothing reported / On my check: room unlocked, one device left out."' },
+      { q: '「異常なし」が危険な理由', a: '何を確認したうえでの異常なしかが伝わらない。確認していないことと、確認して問題がないことが区別できなくなる。', aEn: 'It does not say what was checked. It hides the difference between "checked and clear" and "not checked".' },
+      { q: '翌朝、誰に何を伝えるか', a: '上長へ経過を報告し、クライアント側が朝から対応に入れるよう情報を整理して渡す。', aEn: 'Report the sequence to your supervisor, and organise it so the client can pick it up in the morning.' },
+    ],
+    inject1: { q: '前直「見ていない。自分の担当時間ではない」', a: '議論しない。発言をそのまま記録し、判断は上長に委ねる。', aEn: 'Do not argue. Record what was said, as said, and leave the assessment to your supervisor.' },
+    inject2: { q: '「あのPC、誰か動かしましたか」', a: '事実のみ答える。発見時刻と、どこへ保管したかを伝える。中身には触れない。', aEn: 'Answer with fact only: when you found it and where you secured it. Say nothing of the contents.' },
+    split: '前直へ直接連絡するか、上長経由にするか。班によって分かれる。根拠を述べさせる。',
+    splitEn: 'Contact the previous guard directly, or go through the supervisor? Groups will split. Make them reason it.',
+  },
+
+  // ── 第14時限 ──────────────────────────────────────────────────────────────
+  'CASE 14-A': {
+    titleJa: 'TTX 14-A 模範解答', titleEn: 'TTX 14-A — Model Answers',
+    sources: '消防法、総務省消防庁、警察庁「警備員教育」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '「電子レンジを使っていた」は火災を否定するか', key: true, a: 'しない。発報の原因を説明しうるだけで、火災がないことの確認にはならない。目視するまで断定しない。', aEn: 'No. It may explain the activation, but it does not confirm there is no fire. Do not conclude before you have seen it.' },
+      { q: '最初に確認するもの', a: '受信機の地区表示。何階のどの区画か。無線では「3階東区画、発報。現場確認に向かいます」と伝える。', aEn: 'The zone display: which floor, which zone. On the radio: "Third floor east, activation, going to verify."' },
+      { q: '通報するか。上長不在なら', a: '判断者はSite SOPが定める。上長が不在なら緊急連絡体制の次順位者へ。不在を理由に自分で決めない。', aEn: 'The Site SOP names who decides. If your supervisor is away, go to the next contact. Absence is not authority.' },
+      { q: '防火戸の閉鎖と誘導', a: '通行できる経路が変わっている。閉鎖箇所を確認してから誘導する。階段誘導が前提、エレベーターは使わせない。', aEn: 'The usable routes have changed. Check what has closed before guiding. Stairs only; no lifts.' },
+    ],
+    inject1: { q: '4階西区画で第2報', a: '2区画同時。非火災報の可能性が下がる。全館避難と通報の判断へ切り替える。', aEn: 'Two zones at once makes a false alarm unlikely. Switch to full evacuation and calling.' },
+    inject2: { q: '「ベルを止めてほしい」', a: '止めない。音を止めることは目的ではない。操作権限もSite SOPで定められている。', aEn: 'Do not silence it. Stopping the noise is not the objective, and the authority to do it is set by the SOP.' },
+    split: '確認に単独で向かうか、受信機に人を残すか。2名しかいない場合、両立しない。捨てた方を言わせる。',
+    splitEn: 'Go and verify alone, or keep someone at the panel? With two people you cannot do both. Make them say which they dropped.',
+  },
+
 };
 
 module.exports = D;

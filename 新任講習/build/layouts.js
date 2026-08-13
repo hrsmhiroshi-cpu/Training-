@@ -536,3 +536,34 @@ function debrief(pres, d, ctx) {
   return s;
 }
 module.exports.debrief = debrief;
+
+// ── 参照HP + QRコード ────────────────────────────────────────────────────────
+// 画像は資料に埋め込まず、リンク先で確認する運用。QRは講習中に受講者が
+// 自分の端末から飛べるようにするため。
+function links(pres, d, ctx) {
+  const s = base(pres);
+  headerSm(s, d.titleJa, d.titleEn, d.block);
+  let y = 1.72;
+  if (d.lead) {
+    bi(s, d.lead, d.leadEn, { x: G.M, y, w: G.CW, h: 0.56, jaSize: 13, enSize: 12, bold: true });
+    y += 0.72;
+  }
+  const n = d.items.length;
+  const w = (G.CW - 0.40) / n;
+  d.items.forEach((it, i) => {
+    const x = G.M + (w + 0.40) * i;
+    s.addShape('roundRect', { x, y, w, h: 3.90, fill: { color: C.tint }, line: { type: 'none' }, rectRadius: 0.06 });
+    bi(s, it.ja, it.en, { x: x + 0.30, y: y + 0.26, w: w - 0.60, h: 0.90, jaSize: 16, enSize: 14, bold: true, jaColor: C.navy, enColor: C.tealDk });
+    if (it.qr) s.addImage({ path: it.qr, x: x + (w - 1.70) / 2, y: y + 1.30, w: 1.70, h: 1.70 });
+    s.addText(it.url, {
+      x: x + 0.20, y: y + 3.16, w: w - 0.40, h: 0.60, align: 'center', valign: 'top', margin: 0,
+      fontFace: F.en, fontSize: 11, color: C.ink, breakLine: true,
+    });
+  });
+  if (d.note) {
+    bi(s, d.note, d.noteEn, { x: G.M, y: 6.00, w: G.CW, h: 0.60, jaSize: 11, enSize: 10, bold: true, jaColor: C.tealDk, enColor: C.tealDk });
+  }
+  if (d.sources) srcLine(s, d.sources);
+  footer(s, ctx.footJa, ctx.footEn, ctx.n);
+}
+module.exports.links = links;
