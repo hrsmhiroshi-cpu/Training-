@@ -207,6 +207,73 @@ const D = {
     splitEn: 'Call the colleague in, or handle it alone? Make them weigh both the effect of numbers and the risk of surrounding.',
   },
 
+  // ── 第8時限 ───────────────────────────────────────────────────────────────
+  'CASE 8-A': {
+    titleJa: 'TTX 8-A 模範解答', titleEn: 'TTX 8-A — Model Answers',
+    sources: '警備業法、警察庁「警備員教育」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '記載がないときの拠り所', key: true, a: '一般原則に戻る。人命 → 法令 → Site SOP → クライアント要望。自分で新しい運用を作らない。', aEn: 'Fall back on the general order: life, law, Site SOP, client wishes. Do not invent a practice.' },
+      { q: 'どの柱に関わるか', a: 'People。退室記録がないまま一晩経っている。まず人の安否である。', aEn: 'People. Someone has been unaccounted for overnight. Their welfare comes first.' },
+      { q: '立ち入ってよいか', a: '人の安否確認のために入る。根拠は人命であって、調査ではない。', aEn: 'Enter to check on their welfare. The basis is life, not investigation.' },
+      { q: '上長に連絡がつかない場合', a: '緊急連絡体制の次順位者へ。不在を理由に自分で判断しない。', aEn: 'Go to the next person on the call-out list. Absence is not authority to decide.' },
+    ],
+    inject1: { q: '机に伏せて動かない人物', a: '安否確認に切り替える。呼びかけ、反応がなければ第6時限の手順に入る。', aEn: 'Switch to a welfare check. Call out; if there is no response, run the Period 6 sequence.' },
+    inject2: { q: '「徹夜で作業していた」', a: '安否は確認できた。記録に残し、退室記録の欠落は別に報告する。', aEn: 'Their welfare is confirmed. Record it, and report the missing exit log separately.' },
+    split: '入る前に上長を待つか、先に安否を確認するか。人命を根拠に説明できるかを問う。',
+    splitEn: 'Wait for the supervisor, or check on them first? Ask whether they can justify it on life grounds.',
+  },
+
+  // ── 第9時限 ───────────────────────────────────────────────────────────────
+  'CASE 9-A': {
+    titleJa: 'TTX 9-A 模範解答', titleEn: 'TTX 9-A — Model Answers',
+    sources: '個人情報保護法、不正競争防止法、経済産業省「営業秘密管理指針」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: 'どの柱に関わるか', a: 'Asset（情報資産）。外部に出れば Reputation にも及ぶ。', aEn: 'Asset — information. If it leaves the building it becomes Reputation as well.' },
+      { q: '拾ってよいか。読んでよいか', key: true, a: '拾ってよい。読んではいけない。表紙の分類表示までで判断する。', aEn: 'Pick it up, yes. Do not read it. Judge from the cover classification only.' },
+      { q: '誰にいつ報告するか', a: '警備責任者へその場で。深夜でも翌朝に回さない。発見時刻が記録の価値を決める。', aEn: 'The security supervisor, immediately. Do not wait for morning — the time of discovery is what gives the record value.' },
+      { q: '日誌にどう書くか', a: '発見時刻、場所、分類表示、引渡し先を書く。中身は書かない。', aEn: 'Time, place, classification, and who you handed it to. Never the contents.' },
+    ],
+    inject1: { q: '清掃員が入室', a: '面前で扱う。単独で処理しない。誰が見ていたかも記録する。', aEn: 'Handle it in their presence. Do not process it alone. Record who saw it.' },
+    inject2: { q: '翌朝「あの資料見なかった？」', a: '事実のみ答える。「拾って◯◯へ引き渡しました」。中身には触れない。', aEn: 'Answer with fact only: you picked it up and handed it over. Say nothing of the contents.' },
+    split: '保管するか、その場に置いて報告するか。どちらも成り立つ。根拠を述べさせる。',
+    splitEn: 'Secure it, or leave it and report? Both are defensible. Make them state the reasoning.',
+  },
+
+  'CASE 9-B': {
+    titleJa: 'TTX 9-B 模範解答', titleEn: 'TTX 9-B — Model Answers',
+    sources: '個人情報保護法、不正競争防止法',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '管理職であることは根拠になるか', a: 'ならない。開示の可否は契約とクライアントの規程で決まる。役職では決まらない。', aEn: 'No. The contract and the client\'s rules decide, not the person\'s rank.' },
+      { q: '警備員に判断する権限はあるか', a: 'ない。取り次ぐところまでが役割。日頃の協力関係は判断を変える理由にならない。', aEn: 'No. Your role ends at referral. A good working relationship does not change that.' },
+      { q: '断り方', a: '「私には開示の判断ができません。担当へお繋ぎします」。断るのではなく、繋ぐと伝える。', aEn: '"I am not able to decide that. Let me connect you with the right person." You are routing, not refusing.' },
+      { q: '保全の依頼は受けてよいか', key: true, a: '受けてよい。保全＝残す、開示＝渡す。警備員が受けられるのは前者だけ。', aEn: 'Yes. Preserving means keeping it; disclosing means handing it over. Only the first is yours to accept.' },
+    ],
+    inject1: { q: '「あなたが見て教えて」', a: '応じられない。自分が見て伝えるのは開示と同じ結果になる。言い換えを見抜く。', aEn: 'Decline. Looking and telling produces the same result as showing. Spot the rephrasing.' },
+    inject2: { q: '「依頼書を出す。消さないで」', a: 'これは受けてよい。上書きを防ぐ依頼であり、内容を渡す依頼ではない。時刻とともに記録する。', aEn: 'This you may accept. It prevents overwrite; it does not hand over content. Record it with the time.' },
+    split: 'インジェクト①に気づけるか。「見せない」から「見て教える」への言い換えが本問の核。',
+    splitEn: 'Can they spot inject 1? The shift from "show me" to "look and tell me" is the heart of this case.',
+  },
+
+  // ── 第10時限 ──────────────────────────────────────────────────────────────
+  'CASE 10-A': {
+    titleJa: 'TTX 10-A 模範解答', titleEn: 'TTX 10-A — Model Answers',
+    sources: '警察庁「警備員教育」、全国警備業協会 教育教材',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '台帳と自己申告のどちらを優先するか', key: true, a: '台帳が一次情報。自己申告は二次情報である。確認が取れるまで通さない。', aEn: 'The log is primary; the visitor\'s account is secondary. No entry until it is confirmed.' },
+      { q: 'ホスト不在のとき、次にどこへ', a: '同じ部署の別の担当者、クライアント側の受付責任者や総務へ上げる。', aEn: 'Another contact in the department, or the client\'s reception lead or general affairs.' },
+      { q: '待たせる／帰す／別担当につなぐ', a: '判断するのはクライアント側の責任者。警備員は確認と取次ぎを行う。', aEn: 'The client\'s responsible party decides. You verify and refer.' },
+      { q: '苛立ちへの対応', a: '「お急ぎのところ申し訳ありません」と受け止めたうえで、手続きは変えない。', aEn: 'Acknowledge it — "I am sorry to delay you" — and keep the procedure unchanged.' },
+    ],
+    inject1: { q: '「とりあえず上まで行かせてくれ」', a: '通さない。確認できていない状態は、時間が経っても変わらない。', aEn: 'Do not admit him. Time passing does not turn an unconfirmed visit into a confirmed one.' },
+    inject2: { q: '別の社員が「知っています」', a: '口添えは確認の代わりにならない。その社員がホストに代わって受け入れるなら、氏名を記録する。', aEn: 'Vouching is not verification. If that employee will host him, record their name.' },
+    split: '帰っていただくか、待っていただくか。判断はクライアント側にある点を確認させる。',
+    splitEn: 'Turn him away or hold him? Make sure they land on the client being the one who decides.',
+  },
+
 };
 
 module.exports = D;
