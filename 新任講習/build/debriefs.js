@@ -173,6 +173,40 @@ const D = {
     splitEn: 'Lock the door now, or leave it as found to preserve the scene? Both are defensible. Make them reason it.',
   },
 
+  // ── 第6時限 ───────────────────────────────────────────────────────────────
+  'CASE 6-A': {
+    titleJa: 'TTX 6-A 模範解答', titleEn: 'TTX 6-A — Model Answers',
+    sources: '総務省消防庁「救急蘇生法の指針（市民用）」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: 'しゃくり上げる呼吸の判断', key: true, a: '正常な呼吸ではない。心停止として扱い、胸骨圧迫を開始する。迷ったら開始する。', aEn: 'It is not normal breathing. Treat it as cardiac arrest and start compressions. If unsure, start.' },
+      { q: '2名の配置', a: '1名が傷病者に付いて圧迫を開始。もう1名が119番しながらAEDを取りに走る。', aEn: 'One stays and starts compressions. The other calls 119 while going for the AED.' },
+      { q: '119番とAEDの順序', a: '同時に進める。2名しかいないので、通報しながら移動する。圧迫は止めない。', aEn: 'In parallel. With only two of you, call while moving. Compressions do not stop.' },
+      { q: '到着口までの誘導', a: 'AEDを持ち帰った1名が、そのまま到着口へ戻って誘導する。地下は分かりにくい。', aEn: 'The one who fetched the AED goes back to meet the crew. A basement is hard to find.' },
+    ],
+    inject1: { q: '指令員から「胸骨圧迫を」', a: '従う。電話をスピーカーにして床に置き、両手を圧迫に使う。', aEn: 'Comply. Put the phone on speaker on the floor so both hands are free for compressions.' },
+    inject2: { q: '腕が上がらなくなってきた', a: '交代する。「交代します」と声をかけ、中断を最小にして入れ替わる。質が落ちたまま続けない。', aEn: 'Change over. Say "changing over" and swap with the shortest break. Do not carry on at reduced quality.' },
+    split: '2名しかいない場面で、誘導を優先するか圧迫を優先するか。捨てた判断と理由を言わせる。',
+    splitEn: 'With only two of you, do you prioritise meeting the crew or the compressions? Make them say what they dropped, and why.',
+  },
+
+  // ── 第7時限 ───────────────────────────────────────────────────────────────
+  'CASE 7-A': {
+    titleJa: 'TTX 7-A 模範解答', titleEn: 'TTX 7-A — Model Answers',
+    sources: '警備業法、刑法、警察庁「警備員教育」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '対話が効いていない兆候', a: '声が大きくなり続けている。同じ言葉を繰り返している。距離を詰めてきている。3つ揃っている。', aEn: 'Rising volume, a repeated phrase, and closing distance. All three are present.' },
+      { q: '立ち位置の問題', key: true, a: '背後が行き止まりで、自分の退路がない。出口が相手の後方にある。横に動いて壁を背にしない位置へ移る。', aEn: 'You have a wall behind you and no way out, with the exit behind them. Move sideways off the wall.' },
+      { q: 'ポケットの手', a: '注視するが、掴もうとしない。中身は分からない。距離を取ることが対応であって、確認は対応ではない。', aEn: 'Watch it, but do not grab for it. You do not know what is in it. Distance is the response; checking is not.' },
+      { q: '離脱・応援・通報の順序', a: '離脱を先に。距離と退路を確保してから応援を呼び、必要に応じて通報する。', aEn: 'Disengage first. Get distance and a way out, then call backup, then call the police if needed.' },
+    ],
+    inject1: { q: '「責任者を呼べ」とさらに半歩', a: '要求には応じてよい。取り次ぐと伝えながら、同時に距離を戻す。応じることと近づくことは別。', aEn: 'You can act on the request. Say you will refer it while you re-open the distance. Agreeing is not the same as staying close.' },
+    inject2: { q: '同僚が相手の背後に立った', a: '囲まない。相手が引き下がれる形を残す。同僚に横へ回るよう合図する。', aEn: 'Do not surround them. Leave them a way to step back. Signal your colleague to move to the side.' },
+    split: '同僚を呼ぶか、自分だけで収めるか。人数を増やすことの効果と、囲む危険の両方を述べさせる。',
+    splitEn: 'Call the colleague in, or handle it alone? Make them weigh both the effect of numbers and the risk of surrounding.',
+  },
+
 };
 
 module.exports = D;
