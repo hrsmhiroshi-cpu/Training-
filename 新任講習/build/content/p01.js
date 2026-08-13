@@ -119,7 +119,7 @@ module.exports = {
           b: [
             { ja: '1962年　日本で最初の警備保障会社が設立される', en: "1962: Japan's first security company is founded" },
             { ja: '1964年　東京オリンピックの警備を民間が担った', en: '1964: private security handled the Tokyo Olympics' },
-            { ja: '当時は業務を規律する法律がなく、質にばらつきがあった', en: 'No law regulated the work at the time, and quality varied widely' },
+            { ja: '1972年まで、警備業務を規律する法律はなかった', en: 'Until 1972 there was no law regulating security work' },
           ],
         },
         {
@@ -127,7 +127,7 @@ module.exports = {
           b: [
             { ja: '昭和47年法律第117号として制定された', en: 'Enacted as Act No. 117 of 1972' },
             { ja: '認定制度・警備員の制限・教育義務を定めた', en: 'It established certification, restrictions on officers, and training duties' },
-            { ja: '条文の多くは「やってはいけないこと」を定めている', en: 'Much of the Act defines what must not be done' },
+            { ja: '第15条は、特別な権限を与えるものではないと明記している', en: 'Article 15 states expressly that the Act confers no special authority' },
           ],
         },
       ],
@@ -219,7 +219,7 @@ module.exports = {
         {
           h: '追跡する・事情を聞く', hEn: 'Pursuit and Questioning',
           b: [
-            { ja: '逃げる相手を追わない。追跡は有形力に発展しやすい', en: 'Do not chase someone who runs. Pursuit escalates into force' },
+            { ja: '逃げる相手を追わない。追跡の先で相手に触れれば有形力になる', en: 'Do not chase. If the chase ends in you touching them, that is force' },
             { ja: '取り押さえた相手から事情を聞く権限はない', en: 'You have no power to question a person you have detained' },
             { ja: '事務所に留め置く、サインを求める、写真を撮ることもできない', en: 'Nor may you hold them in an office, ask them to sign, or photograph them' },
           ],
@@ -249,7 +249,7 @@ module.exports = {
           b: [
             { ja: 'People：クライアント社員、来訪者、そして自分自身の安全', en: 'People: the safety of client staff, visitors, and yourself' },
             { ja: 'Asset：物理資産と情報資産。情報は見えなくても資産である', en: 'Asset: physical and information assets. Information is an asset even unseen' },
-            { ja: 'Reputation：クライアント企業の信用。応対品質が直接効く', en: "Reputation: the client's standing. Your conduct affects it directly" },
+            { ja: 'Reputation：クライアント企業の信用。来訪者が最初に接するのは警備員である', en: "Reputation: the client's standing. A visitor's first contact is the guard" },
             { ja: '1つの行動が3つを同時に守り、1つの過失が3つを同時に損なう', en: 'One action protects all three at once; one lapse damages all three at once' },
           ],
         },
@@ -333,7 +333,7 @@ module.exports = {
       inject2En: 'Arriving employees have stopped and are watching.',
       sop: '立哨位置を離れてよいか、離れる場合の連絡先は現場ごとに定められている。',
       sopEn: 'Whether you may leave your post, and whom to notify if you do, are set per site.',
-      sources: SRC.basic,
+      sources: SRC.basic + '、架空シナリオ',
     },
 
     {
@@ -355,7 +355,7 @@ module.exports = {
       inject2En: 'Employees are starting to queue at the exit to leave.',
       sop: '所持品確認の運用と、指令書にない依頼を受けた場合の連絡順序は現場ごとに異なる。',
       sopEn: 'Bag-check practice, and whom to call for a request outside the post orders, differ by site.',
-      sources: SRC.law,
+      sources: SRC.law + '、架空シナリオ',
     },
 
     {
@@ -367,8 +367,8 @@ module.exports = {
         { ja: '触れる・拘束する・追う・カバンを開ける ― いずれも日本ではできない。', en: 'Touching, restraining, chasing, opening a bag — none of these are yours to do.' },
         { ja: '判断軸は 人命 → 法令 → Site SOP → クライアント要望。順序を崩さない。', en: 'Priority: life, law, Site SOP, client wishes. Keep that order.' },
       ],
-      next: '第2時限 ― その土台の上に、警備員に求められる資質と品格を置きます。',
-      nextEn: 'Period 2 — on that foundation, the qualities expected of an officer.',
+      next: '第2時限 ― 続いて、警備員に求められる資質と品格を扱います。',
+      nextEn: 'Period 2 — next, the qualities and conduct expected of an officer.',
     },
   ],
 };
