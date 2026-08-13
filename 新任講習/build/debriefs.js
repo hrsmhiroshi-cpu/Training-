@@ -274,6 +274,56 @@ const D = {
     splitEn: 'Turn him away or hold him? Make sure they land on the client being the one who decides.',
   },
 
+  // ── 第11時限 ──────────────────────────────────────────────────────────────
+  'CASE 11-A': {
+    titleJa: 'TTX 11-A 模範解答', titleEn: 'TTX 11-A — Model Answers',
+    sources: '警察庁「警備員教育」、全国警備業協会 教育教材',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '社員かどうか判定できるか', key: true, a: 'できない。判定する権限も手段もない。それは受付と所属部署の役割である。', aEn: 'No. You have neither the authority nor the means. That is for reception and the department.' },
+      { q: '急いでいる相手への伝え方', a: '「お急ぎのところ申し訳ありません、受付でご対応させていただきます」。受け止めてから案内する。', aEn: '"I am sorry to delay you — we will handle it at reception." Acknowledge first, then direct.' },
+      { q: '押し問答の落とし所', a: '受付か警備本部へ誘導し、所属部署への確認と仮入館証の手続きに乗せる。', aEn: 'Guide them to reception or the guard office, for department verification and a temporary pass.' },
+      { q: '通してしまった場合', a: '隠さない。人相・着衣・時刻・通過の有無を記録し、上長へ報告してカメラ確認を依頼する。', aEn: 'Do not conceal it. Record appearance, clothing, time and that they passed; report and ask for footage.' },
+    ],
+    inject1: { q: '列ができ始めた', a: '列は理由にならない。ただし通路を空けるため、本人だけ横へ誘導して手続きに移る。', aEn: 'A queue is not a reason. Move that one person aside to clear the lane, and continue the procedure.' },
+    inject2: { q: '「その人、うちの部署です」', a: '口添えは認証の代わりにならない。その社員が受け入れるなら氏名を記録し、仮入館証の手続きに乗せる。', aEn: 'Vouching does not replace authentication. If that employee will host him, record their name and issue a temporary pass.' },
+    split: '列がある状況で止め続けるか、いったん通して後追いするか。前例を作る意味を考えさせる。',
+    splitEn: 'Hold the line with a queue building, or let him through and follow up? Make them weigh the precedent.',
+  },
+
+  'CASE 11-B': {
+    titleJa: 'TTX 11-B 模範解答', titleEn: 'TTX 11-B — Model Answers',
+    sources: '警察庁「警備員教育」、全国警備業協会 教育教材',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '開けてよいか', key: true, a: '開けない。警備員に開封の権限はない。宛先の確認までが範囲である。', aEn: 'Do not open it. You have no authority to. Checking the addressee is where your part ends.' },
+      { q: 'どこに置くか。動かしてよいか', a: '人の少ない場所へ、必要最小限の移動にとどめる。振らない、傾けない、水に入れない。', aEn: 'Move it as little as possible, to where fewest people are. Do not shake, tilt or immerse it.' },
+      { q: '連絡の順序', a: '上長へ即時。次にクライアント側の担当窓口。警察への通報の判断は上長が行う。', aEn: 'Your supervisor first, then the client contact. The decision to call the police is theirs.' },
+      { q: '宅配業者に確認できること', a: '業者名、配送センター、伝票番号、集荷元。帰る前に控える。', aEn: 'The company, the depot, the docket number and where it was collected. Take it before they leave.' },
+    ],
+    inject1: { q: '業者が帰ろうとしている', a: '引き止めない。控えられる情報を先に取る。業者は当事者ではない。', aEn: 'Do not detain them. Take what you can note first. The courier is not the issue.' },
+    inject2: { q: '「開けて見てみましょうか」', a: '同調しない。社員であっても、その場で開ける判断はしない。上長の指示を待つ。', aEn: 'Do not go along with it. Even an employee does not decide to open it on the spot. Wait for instructions.' },
+    split: 'その場に置いて人を遠ざけるか、隔離場所へ移すか。Site SOPの指定が優先する。',
+    splitEn: 'Leave it and clear the area, or move it to an isolation point? The Site SOP\'s designation governs.',
+  },
+
+  // ── 第12時限 ──────────────────────────────────────────────────────────────
+  'CASE 12-A': {
+    titleJa: 'TTX 12-A 模範解答', titleEn: 'TTX 12-A — Model Answers',
+    sources: '警察庁「警備員教育」、経済産業省「秘密情報の保護ハンドブック」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '入室して確認するか', key: true, a: '単独で踏み込まない。ドアから離れた安全な位置で、時刻・人数・服装・作業内容を整理する。', aEn: 'Do not go in alone. From a safe distance, note the time, the number of people, their clothing and what they are doing.' },
+      { q: '報告の内容', a: '上長または警備本部へ即時。「サーバ室に事前連絡のない作業者2名、確認願います」と簡潔に。', aEn: 'Supervisor or guard office, immediately: "Two unannounced workers in the server room — please verify."' },
+      { q: '正規の緊急対応かもしれない可能性', a: '確認手順を踏むこと自体は責められない。正規であっても、確認は手続きである。', aEn: 'Following the verification procedure is never blameworthy. Even if it is legitimate, verifying is procedure.' },
+      { q: '自分の安全', a: '出入口の動線が見える位置で待機する。逃げ道をふさぐ位置に立たない。', aEn: 'Wait where you can see the exit route. Do not stand where you block their way out.' },
+    ],
+    inject1: { q: '「どうしました」と声をかけられた', a: '普通に応対する。所属と作業内容、誰の許可かを聞き、そのまま記録する。詰問しない。', aEn: 'Respond normally. Ask their company, the work, and whose authorisation — and record it. Do not interrogate.' },
+    inject2: { q: '「担当の方に許可をもらっています」', a: '氏名を聞いて確認に回す。自分では判定しない。「確認しますので少々お待ちください」。', aEn: 'Take the name and pass it up for checking. Do not decide yourself: "Let me confirm that, please wait."' },
+    split: '入室記録がないことをどう扱うか。「事前連絡がなかった」事実が最重要情報である点を確認させる。',
+    splitEn: 'How do they weigh the missing entry log? Make sure they land on the absence of notification being the key fact.',
+  },
+
 };
 
 module.exports = D;
