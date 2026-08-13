@@ -107,6 +107,72 @@ const D = {
     splitEn: 'Say it at the time, or report after the shift? Make them reason it through with the team in mind.',
   },
 
+  // ── 第4時限 ───────────────────────────────────────────────────────────────
+  'CASE 4-A': {
+    titleJa: 'TTX 4-A 模範解答', titleEn: 'TTX 4-A — Model Answers',
+    sources: '警備業法、刑法、刑事訴訟法',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '犯罪か、確認事項か', key: true, a: '確認が必要な事象。社員が会社備品を持つこと自体は犯罪ではなく、明白性を満たさない。', aEn: 'A matter to verify. An employee holding company property is not itself a crime; the obviousness test is not met.' },
+      { q: '様式を知らないことの影響', a: '判断の根拠にしない。知らないなら、確認できる者に確認する。', aEn: 'It is not a basis for a decision. If you do not know, ask someone who can confirm.' },
+      { q: 'できること／できないこと', a: 'できるのは確認の依頼、記録、報告。強制、取り上げ、進路をふさぐことはできない。', aEn: 'You may request, record and report. You may not compel, seize, or block their path.' },
+      { q: '誰に何分以内に報告するか', a: '警備責任者へ即時。品目、型番、時刻、会話をそのまま伝える。', aEn: 'The security supervisor, immediately: item, model, time, and what was said.' },
+    ],
+    inject1: { q: '無線「出口で止めろ」', a: '上位者の指示でも権限は増えない。「実力での制止はできません。記録と報告を行います」と代替案を返す。', aEn: 'An order from above does not expand your powers. Reply: "I cannot physically stop them. I will record and report."' },
+    inject2: { q: 'そのまま出口へ向かった', a: '追わない。追跡の先で相手に触れれば有形力になる。', aEn: 'Do not follow. If the chase ends in you touching them, that is force.' },
+    split: '指示に従うか。従うと答えた班には「何をもって止めるのか」を問う。無言で従わないのが最も悪い。',
+    splitEn: 'Do you obey? Ask those who say yes: by what means? Silent non-compliance is the worst outcome.',
+  },
+
+  'CASE 4-B': {
+    titleJa: 'TTX 4-B 模範解答', titleEn: 'TTX 4-B — Model Answers',
+    sources: '刑法第36条、刑事訴訟法、消防法',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '腕を押さえた根拠', a: '正当防衛（刑法第36条）。急迫不正の侵害に対し、やむを得ずした行為に当たる。', aEn: 'Self-defence (Penal Code Art. 36): an unavoidable act against an imminent and unlawful attack.' },
+      { q: '倒れた時点で権利はどうなるか', key: true, a: '侵害が終わっているので、正当防衛の根拠も終わる。押さえ続ければ過剰防衛になりうる。', aEn: 'The attack has ended, so the basis ends with it. Continuing to hold them can become excessive defence.' },
+      { q: '倒れて動かない相手にまず何をするか', a: '人命が最優先。反応と呼吸を確認する。頭を打っている可能性があるので動かさない。', aEn: 'Life comes first. Check for response and breathing. They may have hit their head, so do not move them.' },
+      { q: '通報は110番か119番か', a: '119番を先に。人命が優先する。暴行の件は、その後に110番と社内報告で扱う。', aEn: 'Ambulance first — life takes precedence. The assault goes to the police and the internal report afterwards.' },
+    ],
+    inject1: { q: '「暴行された」と言い始めた', a: '反論しない。時刻・経過・発言をそのまま記録する。判断は警察と会社が行う。', aEn: 'Do not argue. Record the time, the sequence and the words as spoken. Others will assess it.' },
+    inject2: { q: '出口へ歩き出した', a: '引き止めない。人相・着衣・退出時刻を記録し、通報時に伝える。', aEn: 'Do not detain them. Record appearance, clothing and the time they left, and pass it on when you call.' },
+    split: '救急要請の前に社内へ一報を入れるか。人命に関わる場合は通報を優先する。',
+    splitEn: 'Do you notify internally before calling? Where life is at risk, the emergency call comes first.',
+  },
+
+  // ── 第5時限 ───────────────────────────────────────────────────────────────
+  'CASE 5-A': {
+    titleJa: 'TTX 5-A 模範解答', titleEn: 'TTX 5-A — Model Answers',
+    sources: '消防法、総務省消防庁、警察庁「警備員教育」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '最初の一言', key: true, a: '「救急です」。種別を先に言う。場所より先である。種別が分かって初めて相手は隊を選べる。', aEn: '"We need an ambulance." The type comes first, before the location — it is what lets them choose the response.' },
+      { q: '伝える順序と、省いてよい項目', a: '種別 → 場所 → 状況（意識・呼吸）→ 人数 → 自分の氏名と折り返し。年齢や顔色は聞かれてから答える。', aEn: 'Type, location, condition, numbers, then your name and call-back. Age and colour can wait until asked.' },
+      { q: '「意識はありますか」への答え', a: '「呼びかけに反応がありません」。見た事実で答える。「意識不明です」と断定しない。', aEn: '"He does not respond when spoken to." Answer with what you observed; do not declare him unconscious.' },
+      { q: '社員2名に何を頼むか', a: '1名にAEDを取りに行かせ、1名を到着口の誘導に付ける。頼む相手を指差して特定する。', aEn: 'Send one for the AED and post the other at the entrance to meet the crew. Point at each person as you assign it.' },
+    ],
+    inject1: { q: '「呼吸はしていますか」', a: '「胸の動きは見えますが、確信が持てません」。分からないことは分からないと言う。', aEn: '"I can see chest movement but I am not certain." Say plainly when you do not know.' },
+    inject2: { q: '目を開けた', a: '切らない。状態が変わったことをその場で伝える。判断は指令員が行う。', aEn: 'Do not hang up. Report the change as it happens. The dispatcher decides what it means.' },
+    split: '社内へ一報を入れてから119番か、119番が先か。人命に関わる場合は通報を優先する。',
+    splitEn: 'Notify internally first, or call 119 first? Where life is at risk, the emergency call comes first.',
+  },
+
+  'CASE 5-B': {
+    titleJa: 'TTX 5-B 模範解答', titleEn: 'TTX 5-B — Model Answers',
+    sources: '警察庁「警備員教育」、個人情報保護法',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '同僚の報告文の問題点', key: true, a: '見ていない「侵入」を断定している。事実は「扉が開いていた」と「足跡があった」までである。', aEn: 'It asserts an intrusion nobody saw. The facts stop at the open door and the footprints.' },
+      { q: 'あなたなら何と報告するか', a: '「20時15分、B1東側非常口が15cmほど開いていた。施錠されているはずの扉で、付近に人影はない。内側に濡れた足跡が数歩分ある」。', aEn: '"At 20:15 the B1 east exit stood about 15 cm open. It should have been locked, nobody was nearby, and there are a few wet footprints inside."' },
+      { q: '扉と足跡の扱い', a: '足跡は動かさない、踏まない、拭かない。扉の施錠は上長の指示による。', aEn: 'Do not step on, move or wipe the footprints. Locking the door waits on your supervisor.' },
+      { q: '110番するか', a: '判断者は上長またはSite SOPが定める者。警備員が単独で決めない。', aEn: 'The supervisor, or whoever the Site SOP designates, decides. Not you alone.' },
+    ],
+    inject1: { q: '「早く閉めよう、寒いから」', a: '止める。閉めれば足跡と扉の状態が失われる。理由を短く伝えて、上長に確認する。', aEn: 'Stop them. Closing it destroys the footprints and the state of the door. Say why, briefly, and check with your supervisor.' },
+    inject2: { q: '「何時ごろからか分かるか」', a: '推測で答えない。「前回の巡回は◯時◯分、そのときは異常なし」と、確認した事実で答える。', aEn: 'Do not guess. Answer with what you checked: the time of your last round, and that it was normal then.' },
+    split: '扉をその場で施錠するか、保全のため開けたままにするか。両論ある。根拠を述べさせる。',
+    splitEn: 'Lock the door now, or leave it as found to preserve the scene? Both are defensible. Make them reason it.',
+  },
+
 };
 
 module.exports = D;
