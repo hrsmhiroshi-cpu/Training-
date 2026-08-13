@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 """第1時限｜基本教育1 警備業務実施の基本原則
 
-内容ソース: Day1統合版 A-0a / A-0b / A-0c、前回現任講習 第1・2・5限
-
-受講者の約7割が外国籍のため、次を方針とする。
-  ・英語は補足ではなく日本語と対等な級数で置く
-  ・1ブロック3項目、1項目1行。折り返さない長さに抑える
-  ・「日本ではできないこと」を独立した論点として明示する
+レイアウトは前回現任講習の最終版に合わせる（1スライド2ブロック、日英同級）。
+受講者の約7割が外国籍のため「日本ではできないこと」を3枚立てる。
 """
 
 import deck as D
@@ -21,16 +17,25 @@ F_EN = f"Period 1 | {DIV_EN} — Fundamental Principles"
 SRC_LAW = "警備業法、警察庁「警備業法等の解釈運用基準」"
 SRC_HIST = "警備業法（昭和47年法律第117号）、全国警備業協会 業界沿革資料"
 SRC_POWER = "警備業法、刑法、刑事訴訟法、警察官職務執行法"
+HOW_JP = "進め方：班で検討 → 4問に回答（10分）→ 班発表（10分）"
+HOW_EN = "Format: discuss in your group, answer all four questions (10 min), then present (10 min)."
 
 
 def build(prs):
-    # 1 ----------------------------------------------------------- 表紙
+    n = [0]
+
+    def pg():
+        n[0] += 1
+        return n[0]
+
+    # 1 --------------------------------------------------------------
     D.s_title(prs, f"第1時限　{slot(1)}　{DIV_JP}", f"Period 1 — {DIV_EN}",
               SUBJ_JP, SUBJ_EN, DATE_JP, DATE_EN)
+    pg()
 
-    # 2 ----------------------------------------------------------- 警備業とは
+    # 2 --------------------------------------------------------------
     D.s_content(
-        prs, "警備業とは", "What the Security Industry Is", "B1",
+        prs, "警備業とは（1/2）", "What the Security Industry Is", "B1",
         "警備業が「他人の需要に応じて行う民間サービス業」であることを説明できる。",
         "You can explain that security is a private service performed for others.",
         [
@@ -38,18 +43,29 @@ def build(prs):
                 ("警備業務を「他人の需要に応じて」行う営業をいう",
                  "A business providing security services for others"),
                 ("依頼主との契約に基づく。契約の範囲が仕事の範囲",
-                 "It runs on a contract. The contract sets your scope"),
+                 "It runs on a contract, and the contract sets your scope"),
                 ("営むには都道府県公安委員会の認定が必要",
                  "It requires certification by the public safety commission"),
             ]),
             ("警備業になるもの・ならないもの", "Where the Line Falls", [
                 ("A社がB警備会社に依頼し、B社の警備員が常駐 → 警備業",
-                 "A hires security firm B, whose officers are posted → yes"),
+                 "A hires firm B, whose officers are posted there → yes"),
                 ("C社の保安係が自社の店舗を見回る → 警備業ではない",
                  "C's own staff patrol C's own store → no"),
                 ("この区別が、適用される法令と教育義務を分ける",
                  "This split decides which laws and training duties apply"),
             ]),
+        ],
+        "配属先の契約範囲と業務内容はSite SOPと警備指令書に定められている。",
+        "Your site's contracted scope and duties are in the Site SOP and post orders.",
+        SRC_LAW, F_JP, F_EN, pg())
+
+    # 3 --------------------------------------------------------------
+    D.s_content(
+        prs, "警備業とは（2/2）", "What the Security Industry Is", "B1",
+        "自分が従事するコーポレートセキュリティの位置づけを言える。",
+        "You can say where corporate security sits within the industry.",
+        [
             ("コーポレートセキュリティ", "Corporate Security", [
                 ("1号警備のうち、企業オフィス常駐に特化した業務",
                  "Type-1 security, focused on stationed duty at offices"),
@@ -67,13 +83,11 @@ def build(prs):
                  "You cannot be assigned to duty until you complete it"),
             ]),
         ],
-        "配属先の契約範囲と業務内容はSite SOPと警備指令書に定められている。",
-        "Your site's contracted scope and duties are in the Site SOP and post orders.",
-        SRC_LAW, F_JP, F_EN, 2)
+        "", "", SRC_LAW, F_JP, F_EN, pg())
 
-    # 3 ----------------------------------------------------------- 4区分
+    # 4 --------------------------------------------------------------
     D.s_content(
-        prs, "警備業務の4区分", "The Four Categories", "B1",
+        prs, "警備業務の4区分（1/2）", "The Four Categories", "B1",
         "1号から4号までの区分を挙げ、自分がどれに従事するかを言える。",
         "You can name the four categories and say which one you work in.",
         [
@@ -81,7 +95,7 @@ def build(prs):
                 ("事務所・住宅・興行場・駐車場等における業務",
                  "Offices, residences, venues, car parks and the like"),
                 ("常駐・巡回・出入管理・受付が中心になる",
-                 "Stationed duty, patrol, access control, reception"),
+                 "Stationed duty, patrol, access control and reception"),
                 ("皆さんが従事するのは、この1号である",
                  "This is the category you will be working in"),
             ]),
@@ -93,6 +107,15 @@ def build(prs):
                 ("交通整理の権限はない。あくまで誘導である",
                  "There is no power to direct traffic. It is guidance"),
             ]),
+        ],
+        "", "", "警備業法第2条第1項、警備業法施行規則", F_JP, F_EN, pg())
+
+    # 5 --------------------------------------------------------------
+    D.s_content(
+        prs, "警備業務の4区分（2/2）", "The Four Categories", "B1",
+        "3号・4号の内容を述べ、いずれも私人の範囲を超えないことを理解する。",
+        "You can describe Types 3 and 4, and see that none exceeds a citizen's limits.",
+        [
             ("3号　運搬警備業務", "Type 3 — Valuables in Transit", [
                 ("運搬中の現金・貴金属・核燃料物質等に係る業務",
                  "Cash, precious metals and nuclear materials in transit"),
@@ -106,56 +129,40 @@ def build(prs):
                  "Watching for and preventing harm to a person"),
                 ("警察の警護とは根拠法も権限も異なる",
                  "The legal basis and powers differ from police protection"),
-                ("私人としての範囲を超えられない点は他号と同じ",
+                ("私人の範囲を超えられない点は、他の号と同じ",
                  "Like the others, it cannot exceed a citizen's limits"),
             ]),
         ],
         "同じ1号でも業務内容は現場ごとに大きく異なる。配属時にSite SOPを確認する。",
         "Even within Type 1, duties differ greatly by site. Check the Site SOP.",
-        "警備業法第2条第1項、警備業法施行規則", F_JP, F_EN, 3)
+        "警備業法第2条第1項、警備業法施行規則", F_JP, F_EN, pg())
 
-    # 4 ----------------------------------------------------------- 沿革
+    # 6 --------------------------------------------------------------
     D.s_content(
         prs, "警備業の沿革", "How the Industry Developed", "B1",
         "警備業法がなぜ生まれたかを述べ、業務が法令で規律される理由を理解する。",
         "You can say why the Act exists, and why the work is regulated.",
         [
-            ("1962年　民間警備の登場", "1962 — Private Security Appears", [
-                ("日本で最初の警備保障会社が設立される",
-                 "Japan's first security company is founded"),
-                ("経済成長にともない、警備の需要が生まれた",
-                 "Economic growth created the demand"),
-                ("当時は業務を規律する法律がなかった",
-                 "At the time no law regulated the work"),
-            ]),
-            ("1964年　東京オリンピック", "1964 — The Tokyo Olympics", [
-                ("大規模イベントの警備を民間が担った",
-                 "Private security handled a large-scale event"),
-                ("民間警備の存在が広く知られるようになった",
-                 "It brought private security to public attention"),
-                ("同時に、業務の質のばらつきが表面化した",
-                 "It also exposed how uneven the quality was"),
+            ("法律ができるまで", "Before the Act", [
+                ("1962年　日本で最初の警備保障会社が設立される",
+                 "1962: Japan's first security company is founded"),
+                ("1964年　東京オリンピックの警備を民間が担った",
+                 "1964: private security handled the Tokyo Olympics"),
+                ("当時は業務を規律する法律がなく、質にばらつきがあった",
+                 "No law regulated the work, and quality varied widely"),
             ]),
             ("1972年　警備業法の制定", "1972 — The Act Is Enacted", [
                 ("昭和47年法律第117号として制定された",
                  "Enacted as Act No. 117 of 1972"),
                 ("認定制度・警備員の制限・教育義務を定めた",
                  "It set certification, restrictions and training duties"),
-                ("第15条で「特別な権限はない」ことを明記した",
-                 "Article 15 states the Act grants no special authority"),
-            ]),
-            ("なぜこの経緯を学ぶのか", "Why This History Matters", [
-                ("警備業法は、事故と行き過ぎへの反省から生まれた",
-                 "The Act grew out of incidents and overreach"),
-                ("条文の多くは「やってはいけないこと」を定める",
-                 "Much of it defines what must not be done"),
-                ("禁止の理由を知ると、迷ったときに使える",
-                 "Knowing why a rule exists helps when you must judge"),
+                ("条文の多くは「やってはいけないこと」を定めている",
+                 "Much of the Act defines what must not be done"),
             ]),
         ],
-        "", "", SRC_HIST, F_JP, F_EN, 4)
+        "", "", SRC_HIST, F_JP, F_EN, pg())
 
-    # 5 ----------------------------------------------------------- 用語
+    # 7 --------------------------------------------------------------
     D.s_terms(
         prs, "日本の法律用語 ①", "Japanese Legal Terms — Part 1",
         "日本国内では日本の法律が適用されます。母国の制度と同じとは限りません。",
@@ -178,9 +185,9 @@ def build(prs):
             ("常駐 jōchū ― 現場に配置されて勤務すること。",
              "Stationed duty. Being posted at a site."),
         ],
-        F_JP, F_EN, 5)
+        F_JP, F_EN, pg())
 
-    # 6 ----------------------------------------------------------- 第15条
+    # 8 --------------------------------------------------------------
     D.s_quote(
         prs, "警備業法 第15条", "Security Services Act, Article 15",
         "警備業者及び警備員は、警備業務を行うに当たつては、この法律により特別に権限を"
@@ -192,9 +199,9 @@ def build(prs):
         "警備業法 第15条 / Article 15",
         "警備員の法的な立場は私人です。制服により権限が加わることはありません。",
         "A security guard is a private citizen in law. The uniform adds no legal authority.",
-        F_JP, F_EN, 6)
+        F_JP, F_EN, pg())
 
-    # 7 ----------------------------------------------------------- 警察との違い
+    # 9 --------------------------------------------------------------
     D.s_compare(
         prs, "警察官と警備員 ― 権限の違い", "Police Officers and Guards — Different Powers",
         "警察官には法律で与えられた権限があります。警備員にはありません。",
@@ -215,38 +222,42 @@ def build(prs):
         ]),
         "警備業法第16条 ― 警備員の服装は、警察官など公務員の制服と明確に識別できるものでなければなりません。",
         "Article 16 — a guard's uniform must be clearly distinguishable from a public official's.",
-        F_JP, F_EN, 7)
+        F_JP, F_EN, pg())
 
-    # 8 ------------------------------------- 日本ではできないこと（身体）
+    # 10 -------------------------------------------------------------
     D.s_content(
-        prs, "日本ではできないこと ① ― 身体", "Not Permitted in Japan — Part 1: The Body", "B1",
-        "相手の身体に関して、日本の法令で許されない行為を具体的に挙げられる。",
-        "You can name specific acts involving a person's body that Japanese law does not allow.",
+        prs, "日本ではできないこと ① 身体", "Not Permitted in Japan — 1: The Body", "B1",
+        "相手の身体について、日本の法令で許されない行為を具体的に挙げられる。",
+        "You can name specific acts involving a person's body that Japanese law forbids.",
         [
             ("触れる・つかむ", "Touching and Seizing", [
-                ("触れた時点で有形力になる。声かけと立ち位置までが限界",
+                ("触れた時点で有形力。声かけと立ち位置までが限界",
                  "Touching is already force. Voice and position are the limit"),
                 ("許されるのは正当防衛か現行犯逮捕に伴う場合だけ",
-                 "Only lawful with self-defence or a flagrant-offender arrest"),
+                 "Lawful only with self-defence or a flagrant-offender arrest"),
                 ("越えれば暴行罪・傷害罪に当たりうる",
                  "Beyond that it can be assault or causing injury"),
             ]),
-            ("取り押さえた後", "After You Have Detained Someone", [
-                ("侵害が終われば権利も終わる。押さえ続けない",
-                 "The right ends with the attack. Do not keep holding them"),
-                ("事務所で事情を聞くことはできない。取り調べ権限はない",
-                 "You may not question them. You have no power to interrogate"),
+            ("拘束する・押さえ続ける", "Restraining and Holding Down", [
+                ("手錠も結束バンドも使えない。逮捕監禁罪に当たりうる",
+                 "No handcuffs, no cable ties. It can be unlawful confinement"),
+                ("侵害が終われば権利も終わる。倒れた相手を押さえ続けない",
+                 "The right ends with the attack. Do not keep holding them down"),
                 ("直ちに警察へ引き渡す（刑事訴訟法第214条）",
                  "Hand them to the police without delay (CCP Art. 214)"),
             ]),
-            ("手錠・拘束具", "Handcuffs and Restraints", [
-                ("警備員に手錠を使用する権限はない",
-                 "A guard has no authority to use handcuffs"),
-                ("結束バンド等で拘束することもできない",
-                 "Nor to restrain a person with cable ties or similar"),
-                ("拘束は逮捕監禁罪に当たりうる",
-                 "Restraining can amount to unlawful capture and confinement"),
-            ]),
+        ],
+        "応援要請の方法と、警察へ通報する判断者は現場ごとに定められている。",
+        "How to call backup, and who decides on a police call, are set per site.",
+        SRC_POWER, F_JP, F_EN, pg())
+
+    # 11 -------------------------------------------------------------
+    D.s_content(
+        prs, "日本ではできないこと ② 追跡と取り調べ",
+        "Not Permitted in Japan — 2: Pursuit and Questioning", "B1",
+        "逃げる相手を追わない理由と、取り調べができない理由を説明できる。",
+        "You can explain why you do not chase, and why you cannot question anyone.",
+        [
             ("追跡", "Pursuit", [
                 ("逃げる相手を追わない。追跡は有形力に発展しやすい",
                  "Do not chase. Pursuit escalates into force"),
@@ -255,58 +266,48 @@ def build(prs):
                 ("記録と通報に切り替える。それが正しい対応である",
                  "Switch to recording and reporting. That is the right move"),
             ]),
-        ],
-        "応援要請の方法と、警察へ通報する判断者は現場ごとに定められている。",
-        "How to call backup, and who decides on a police call, are set per site.",
-        SRC_POWER, F_JP, F_EN, 8)
-
-    # 9 ------------------------------- 日本ではできないこと（持ち物・情報・装備）
-    D.s_content(
-        prs, "日本ではできないこと ② ― 持ち物・情報・装備",
-        "Not Permitted in Japan — Part 2: Property, Information, Equipment", "B1",
-        "持ち物・情報・装備について、日本の法令で許されない行為を具体的に挙げられる。",
-        "You can name acts involving property, information and equipment that are not allowed.",
-        [
-            ("所持品検査", "Bag and Property Checks", [
-                ("強制はできない。同意がなければ開けられない",
-                 "It cannot be compelled. Without consent you cannot open it"),
-                ("「規則だから」は強制してよい根拠にならない",
-                 "\"It is the rule\" is not a basis for compelling anyone"),
-                ("応じない場合は、記録と報告に切り替える",
-                 "If they refuse, switch to recording and reporting"),
+            ("取り調べ・事情聴取", "Questioning and Interrogation", [
+                ("取り押さえた相手から事情を聞く権限はない",
+                 "You have no power to question a person you have detained"),
+                ("事務所に留め置くことも、書面へのサインを求めることもできない",
+                 "You may not hold them in an office or ask them to sign anything"),
+                ("写真を撮る、SNSに上げることもできない",
+                 "You may not photograph them or post anything about them"),
             ]),
-            ("身分証・私物", "ID Cards and Personal Property", [
+        ],
+        "", "", SRC_POWER, F_JP, F_EN, pg())
+
+    # 12 -------------------------------------------------------------
+    D.s_content(
+        prs, "日本ではできないこと ③ 持ち物・情報・装備",
+        "Not Permitted in Japan — 3: Property, Information, Equipment", "B1",
+        "持ち物・情報・装備について、権限外の行為を具体的に挙げられる。",
+        "You can name acts involving property, information and equipment that exceed your authority.",
+        [
+            ("所持品・私物", "Bags and Personal Property", [
+                ("所持品検査は強制できない。同意がなければ開けられない",
+                 "A bag check cannot be compelled. No consent, no opening"),
                 ("身分証を取り上げて返さないことはできない",
                  "You may not take an ID card and withhold it"),
-                ("相手の端末を操作したり、画像を消させたりできない",
-                 "You may not handle their device or make them delete images"),
                 ("実力で物を取り返すこと（自救行為）も認められない",
                  "Recovering property by force is not permitted either"),
             ]),
-            ("装備", "Equipment", [
-                ("銃器は持てない。携帯できるのは届け出た護身用具のみ",
-                 "No firearms. Only notified protective equipment may be carried"),
-                ("護身用具は種類・規格・使用基準が定められている",
-                 "Its type, specification and rules of use are prescribed"),
-                ("配備がない現場では、使用を前提としない",
-                 "Where none is issued, do not plan around using it"),
-            ]),
-            ("情報", "Information", [
+            ("情報と装備", "Information and Equipment", [
                 ("職務質問はできない。氏名や在留資格を問いただす権限はない",
                  "No stop-and-question. You cannot demand a name or visa status"),
                 ("カメラ画像・入退室ログを目的外に見ない、渡さない",
                  "Do not view or hand over footage and logs outside their purpose"),
-                ("業務中の撮影とSNS投稿は禁止。制服や館内も対象",
-                 "No photography or posting on duty, including uniform and interiors"),
+                ("銃器は持てない。携帯できるのは届け出た護身用具のみ",
+                 "No firearms. Only notified protective equipment may be carried"),
             ]),
         ],
         "所持品確認の運用、護身用具の配備、撮影の可否は現場ごとに異なる。",
         "Bag-check practice, equipment issued, and photography rules differ by site.",
-        "警備業法、刑法、個人情報保護法、銃砲刀剣類所持等取締法", F_JP, F_EN, 9)
+        "警備業法、刑法、個人情報保護法、銃砲刀剣類所持等取締法", F_JP, F_EN, pg())
 
-    # 10 ---------------------------------------------------------- 3本柱
+    # 13 -------------------------------------------------------------
     D.s_content(
-        prs, "守るべき3本柱", "The Three Pillars", "B1",
+        prs, "守るべき3本柱（1/2）", "The Three Pillars", "B1",
         "自分の業務が People / Asset / Reputation のどれに関わるかを、その場で言える。",
         "You can say, on the spot, which pillar your action concerns.",
         [
@@ -326,6 +327,15 @@ def build(prs):
                 ("情報は Asset に含まれる。見えなくても資産である",
                  "Information is an asset even when you cannot see it"),
             ]),
+        ],
+        "", "", "警備業法、警察庁「警備員教育」、ASIS GDL CSO 06 2004", F_JP, F_EN, pg())
+
+    # 14 -------------------------------------------------------------
+    D.s_content(
+        prs, "守るべき3本柱（2/2）", "The Three Pillars", "B1",
+        "3つが分離できないことを、具体例で説明できる。",
+        "You can explain with an example why the three cannot be separated.",
+        [
             ("Reputation　社会的信頼", "Reputation", [
                 ("クライアント企業のブランドと社会的評価",
                  "The client's brand and standing"),
@@ -340,18 +350,18 @@ def build(prs):
                 ("1つの過失が3つを同時に損なう",
                  "A single lapse damages all three at once"),
                 ("迷ったら「いま何を守っているか」を言葉にする",
-                 "When unsure, say aloud what you are protecting now"),
+                 "When unsure, say aloud what you are protecting right now"),
             ]),
         ],
         "何がAsset・People・Reputationに当たるかは配属先のSite SOPに定められている。",
         "What counts as each pillar is set out in your site's SOP.",
-        "警備業法、警察庁「警備員教育」、ASIS GDL CSO 06 2004", F_JP, F_EN, 10)
+        "警備業法、警察庁「警備員教育」、ASIS GDL CSO 06 2004", F_JP, F_EN, pg())
 
-    # 11 ---------------------------------------------------------- 判断軸
+    # 15 -------------------------------------------------------------
     D.s_content(
-        prs, "判断の軸と、本講習の3つの問い", "How to Decide, and the Three Questions", "B1",
-        "要求がぶつかったときの優先順位を述べ、3つの問いで自分の行動を検証できる。",
-        "You can state the priority order, and test your actions with three questions.",
+        prs, "判断の軸（1/2）", "How to Decide", "B1",
+        "要求がぶつかったときの優先順位を、順番どおりに言える。",
+        "You can state the priority order when demands conflict.",
         [
             ("判断軸　優先する順に", "The Order of Priority", [
                 ("① 人命 ― 迷ったらここに戻る",
@@ -369,6 +379,17 @@ def build(prs):
                 ("クライアント企業 ― 発注主でSite SOPの実質決定者",
                  "The client: commissions the service and defines the SOP"),
             ]),
+        ],
+        "報告ライン、クライアント窓口、常駐時間帯は現場ごとに異なる。",
+        "Reporting lines, client contacts and staffing hours differ by site.",
+        SRC_LAW, F_JP, F_EN, pg())
+
+    # 16 -------------------------------------------------------------
+    D.s_content(
+        prs, "判断の軸（2/2）― 3つの問い", "How to Decide — The Three Questions", "B1",
+        "3つの問いで自分の行動を検証できる。",
+        "You can test your own actions with the three questions.",
+        [
             ("本講習の3つの問い", "Three Questions for This Course", [
                 ("何を守っているのか。People / Asset / Reputation のどれか",
                  "What am I protecting? People, Asset, or Reputation"),
@@ -386,11 +407,9 @@ def build(prs):
                  "Period 5 is call practice; Period 6 is hands-on first aid"),
             ]),
         ],
-        "報告ライン、クライアント窓口、常駐時間帯は現場ごとに異なる。",
-        "Reporting lines, client contacts and staffing hours differ by site.",
-        SRC_LAW, F_JP, F_EN, 11)
+        "", "", SRC_LAW, F_JP, F_EN, pg())
 
-    # 12 ---------------------------------------------------------- ミニTTX
+    # 17 -------------------------------------------------------------
     D.s_minittx(
         prs, "ミニTTX ― ○か×か、根拠を一言で", "Mini TTX — Yes or No, with one line of reasoning",
         "手元に○×と根拠を書いてください。挙手は求めません。指名します。",
@@ -413,28 +432,26 @@ def build(prs):
             ("クライアントの要望は、法令より優先される。",
              "The client's wishes take precedence over the law."),
         ],
-        F_JP, F_EN, 12)
+        F_JP, F_EN, pg())
 
-    # 13 ---------------------------------------------------------- 解答
+    # 18 -------------------------------------------------------------
     D.s_rows(
-        prs, "ミニTTX ― 解答と根拠の示し方", "Mini TTX — Answers and How to State Your Reasoning",
+        prs, "ミニTTX ― 解答と根拠の示し方", "Mini TTX — Answers and Reasoning",
         "解答　1 ×　2 ×　3 ×　4 ×　5 ○　6 ×　7 ×　8 ×",
         "Answers:  1 No · 2 No · 3 No · 4 No · 5 Yes · 6 No · 7 No · 8 No",
         [
-            ("設問1は「他人の需要に応じて」が要件です。自社を自社が守るのは警備業ではありません。",
-             "Item 1 turns on serving others. Guarding your own premises is not the industry."),
-            ("設問2・3・6は同じ論点です。制服では権限は増えず、追跡も聴取もできません。",
-             "Items 2, 3 and 6 are one point: the uniform adds nothing, and you may not chase or question."),
-            ("設問4は所持品検査です。同意なく開けることはできません。規則は根拠になりません。",
-             "Item 4: you cannot open a bag without consent. A rule is not a legal basis."),
-            ("設問7は在留資格です。確認する権限はありません。判断するのは入管と警察です。",
-             "Item 7: you have no authority over visa status. That is for immigration and police."),
+            ("設問1 ― 「他人の需要に応じて」が要件。自社を自社が守るのは警備業ではない。",
+             "Item 1: it must serve others. Guarding your own premises is not the industry."),
+            ("設問2・3・6 ― 制服では権限は増えない。追跡も事情聴取もできない。",
+             "Items 2, 3, 6: the uniform adds nothing. No chasing, no questioning."),
+            ("設問4・7 ― 同意なくカバンは開けられない。在留資格を問う権限もない。",
+             "Items 4, 7: no bag without consent, and no authority over visa status."),
             ("根拠の示し方：「〔私人／補助者〕として、〔目的〕のため、〔手段〕を取った」",
              "State it this way: \"As a [citizen / delegated agent], I took [action] for [purpose].\""),
         ],
-        F_JP, F_EN, 13)
+        F_JP, F_EN, pg())
 
-    # 14 ---------------------------------------------------------- TTX 1-A
+    # 19-21 ----------------------------------------------------- TTX 1-A
     D.s_ttx(
         prs, "CASE 1-A", "TTX 1-A　警察官と間違われる", "TTX 1-A — Mistaken for a Police Officer",
         "平日の朝、オフィスビルのエントランスで立哨中。通りかかった女性が「近くで自転車を"
@@ -443,6 +460,18 @@ def build(prs):
         "Morning, on stand at an office building entrance. A woman stops and asks you to take a "
         "report because her bicycle was stolen nearby. She appears to think your uniform means you "
         "are a police officer. Many employees are arriving around you.",
+        [
+            ("女性が「警察じゃないなら意味がない」と大きな声を出し始めた。",
+             "She raises her voice: \"If you are not the police, this is useless.\""),
+            ("出勤中の社員が足を止めて、こちらを見ている。",
+             "Arriving employees have stopped and are watching."),
+        ],
+        "立哨位置を離れてよいか、離れる場合の連絡先は現場ごとに定められている。",
+        "Whether you may leave your post, and whom to notify, are set per site.",
+        SRC_LAW, F_JP, F_EN, pg())
+
+    D.s_ttx_q(
+        prs, "TTX 1-A　4つの問い", "TTX 1-A — The Four Questions", HOW_JP, HOW_EN,
         [
             ("これは People / Asset / Reputation のどれに関わるか。",
              "Which pillar does this concern: People, Asset, or Reputation?"),
@@ -453,32 +482,23 @@ def build(prs):
             ("持ち場を離れて交番まで案内してよいか。",
              "May you leave your post to walk her to the police box?"),
         ],
-        [
-            ("女性が「警察じゃないなら意味がない」と大きな声を出し始めた。",
-             "She raises her voice: \"If you are not the police, this is useless.\""),
-            ("出勤中の社員が足を止めて、こちらを見ている。",
-             "Arriving employees have stopped and are watching."),
-        ],
-        "立哨位置を離れてよいか、離れる場合の連絡先は現場ごとに定められている。",
-        "Whether you may leave your post, and whom to notify, are set per site.",
-        SRC_LAW, F_JP, F_EN, 14)
+        F_JP, F_EN, pg())
 
-    # 15 ---------------------------------------------------------- 1-A 解答
     D.s_debrief(
         prs, "CASE 1-A", "TTX 1-A 模範解答", "TTX 1-A — Model Answers",
         [
             ("問1 どの柱に関わるか",
              "People と Reputation。困っている人への対応であり、クライアントの入口での振る舞いでもある。",
-             "People and Reputation. It is help for a person, and it is your conduct at the client's door."),
+             "People and Reputation. It is help for a person, and your conduct at the client's door."),
             ("問2 「警察官ではない」の伝え方",
              "先に否定しない。用件を受け止めてから伝える。「私は警備員です。交番をご案内します」。",
-             "Do not open with the denial. Take in her problem first: \"I am a guard. Let me point you to the police box.\""),
+             "Do not open with the denial. Take in her problem first, then say what you are."),
             ("問3 調書・被害届は扱えるか",
              "扱えない。捜査の権限はなく、書面を預かれば相手の手続きを遅らせることになる。",
-             "No. You have no investigative power, and holding a document would delay her own process."),
+             "No. You have no investigative power, and holding a document would delay her."),
             ("問4 持ち場を離れてよいか",
              "原則として離れない。案内は口頭と指差しで行い、必要なら上長へ連絡する。",
-             "As a rule, do not leave. Direct her verbally and by pointing; call your supervisor if needed."),
+             "As a rule, do not leave. Direct her verbally; call your supervisor if needed."),
         ],
         [
             ("「意味がない」と声が大きくなった → 反論しない。声量を下げ、できることだけを短く伝える。",
@@ -488,11 +508,9 @@ def build(prs):
         ],
         "案内のために持ち場を離れるか。離れないと答えた班には「では誰が対応するのか」を問う。",
         "Do you leave your post? Ask those who say no: then who helps her?",
-        "立哨位置を離れる判断と連絡先はSite SOPによる。",
-        "Whether to leave the post, and whom to notify, follow the Site SOP.",
-        SRC_LAW, F_JP, F_EN, 15)
+        SRC_LAW, F_JP, F_EN, pg())
 
-    # 16 ---------------------------------------------------------- TTX 1-B
+    # 22-24 ----------------------------------------------------- TTX 1-B
     D.s_ttx(
         prs, "CASE 1-B", "TTX 1-B　クライアントからの依頼", "TTX 1-B — A Request from the Client",
         "夜間の常駐勤務中、クライアント企業の課長が警備デスクに来て言う。「今から備品確認を"
@@ -501,6 +519,18 @@ def build(prs):
         "On night duty, a client manager comes to the desk: \"We are doing an equipment check. Open "
         "and inspect each employee's bag at the exit. We are the client, so it is fine.\" The post "
         "orders contain no such duty. Your supervisor is away.",
+        [
+            ("課長が「では君は見ているだけでいい。私が開ける」と言い出した。",
+             "The manager says: \"Then just stand there. I will open them myself.\""),
+            ("退社しようとする社員が出口に並び始めた。",
+             "Employees are starting to queue at the exit to leave."),
+        ],
+        "所持品確認の運用と、指令書にない依頼を受けた場合の連絡順序は現場ごとに異なる。",
+        "Bag-check practice, and whom to call for a request outside the post orders, differ by site.",
+        SRC_POWER, F_JP, F_EN, pg())
+
+    D.s_ttx_q(
+        prs, "TTX 1-B　4つの問い", "TTX 1-B — The Four Questions", HOW_JP, HOW_EN,
         [
             ("所持品検査を強制することはできるか。",
              "Can a bag search be compelled?"),
@@ -511,23 +541,14 @@ def build(prs):
             ("断る場合、何と言うか。関係を壊さずに断れるか。",
              "If you decline, what do you say, without damaging the relationship?"),
         ],
-        [
-            ("課長が「では君は見ているだけでいい。私が開ける」と言い出した。",
-             "The manager says: \"Then just stand there. I will open them myself.\""),
-            ("退社しようとする社員が出口に並び始めた。",
-             "Employees are starting to queue at the exit to leave."),
-        ],
-        "所持品確認の運用と、指令書にない依頼を受けた場合の連絡順序は現場ごとに異なる。",
-        "Bag-check practice, and whom to call for a request outside the post orders, differ by site.",
-        SRC_POWER, F_JP, F_EN, 16)
+        F_JP, F_EN, pg())
 
-    # 17 ---------------------------------------------------------- 1-B 解答
     D.s_debrief(
         prs, "CASE 1-B", "TTX 1-B 模範解答", "TTX 1-B — Model Answers",
         [
             ("問1 所持品検査を強制できるか",
              "できない。強制すれば強要罪等に当たりうる。求められるのは任意の協力だけである。",
-             "No. Compelling it can amount to coercion. Only voluntary cooperation may be requested."),
+             "No. Compelling it can amount to coercion. Only voluntary cooperation may be asked."),
             ("問2 「クライアントの依頼」は根拠になるか",
              "ならない。契約と警備指令書が業務範囲を決める。依頼だけで範囲は広がらない。",
              "No. The contract and post orders define the scope. A request does not widen it."),
@@ -540,17 +561,15 @@ def build(prs):
         ],
         [
             ("「君は見ているだけでいい」 → 同席も加担になりうる。立ち会わず、その場で上長へ連絡する。",
-             "Standing by can make you a participant. Do not attend; call your supervisor there and then."),
+             "Standing by can make you a participant. Do not attend; call your supervisor now."),
             ("社員が出口に並び始めた → 通常どおり退館させる。止める根拠がない以上、止めない。",
              "Let them leave as normal. With no basis to stop them, you do not stop them."),
         ],
         "その場で断るか、保留して上長を待つか。どちらも成り立つ。根拠を述べさせる。",
         "Decline now, or hold and wait for the supervisor? Both are defensible. Make them say why.",
-        "指令書にない依頼への対応順序はSite SOPと緊急連絡体制による。",
-        "The order of response to a request outside the post orders follows the Site SOP.",
-        SRC_POWER, F_JP, F_EN, 17)
+        SRC_POWER, F_JP, F_EN, pg())
 
-    # 18 ---------------------------------------------------------- まとめ
+    # 25 -------------------------------------------------------------
     D.s_rows(
         prs, "第1時限 まとめ", "Period 1 — Summary", "", "",
         [
@@ -563,8 +582,8 @@ def build(prs):
             ("判断軸は 人命 → 法令 → Site SOP → クライアント要望。順序を崩さない。",
              "Priority: life, law, Site SOP, client wishes. Keep that order."),
         ],
-        F_JP, F_EN, 18, dark=True,
+        F_JP, F_EN, pg(), dark=True,
         bridge=("第2時限 ― その土台の上に、警備員に求められる資質と品格を置きます。",
                 "Period 2 — on that foundation, the qualities expected of an officer."))
 
-    return 18
+    return n[0]
