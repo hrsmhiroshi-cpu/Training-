@@ -6,16 +6,45 @@ const { META_JA, META_EN, SRC, slot } = require('./common');
 
 module.exports = {
   file: '07_7限_護身の方法.pptx',
-  footJa: '第7時限｜基本教育7 護身の方法／Day 1 総括',
+  footJa: '第7時限｜基本教育7 護身用具の使用方法その他の護身の方法（実技）',
   footEn: 'Period 7 | Basic Training 7 — Self-Protection and Day 1 Review',
   slides: [
     {
       type: 'title',
-      kicker: `第7時限　${slot(7)}　基本教育7`,
-      kickerEn: 'Period 7 — Basic Training 7',
+      kicker: `第7時限　${slot(7)}　基本教育7（実技）`,
+      kickerEn: 'Period 7 — Basic Training 7 (Practical)',
       titleJa: '護身の方法',
       titleEn: 'Protecting Yourself',
       metaJa: META_JA, metaEn: META_EN,
+    },
+
+    {
+      type: 'topics', block: 'B7',
+      titleJa: 'このコマの進め方', titleEn: 'How This Session Runs',
+      obj: '実技の流れを把握し、全員が距離・姿勢・声と離脱を実際に行う。',
+      objEn: 'You know how the session runs, and everyone practises space, stance, voice and disengaging.',
+      sop: '応援要請の方法、退避場所、通報の判断者は現場ごとに定められている。',
+      sopEn: 'How to call backup, where to withdraw to, and who decides on a call are set per site.',
+      sources: '警備業法施行規則第38条第2項（本科目は講義及び実技訓練の方法による）',
+      cols: 2,
+      topics: [
+        {
+          h: '進め方', hEn: 'Format',
+          b: [
+            { ja: '講義（15分）→ 実技（25分）→ 確認テストと総括（20分）', en: 'Classroom (15 min), practical (25 min), assessment and review (20 min)' },
+            { ja: '2人1組。対応する側と相手役を交代する', en: 'In pairs. Swap between responding and playing the other person' },
+            { ja: '全員が距離・姿勢・声と、離脱を1回以上行う', en: 'Everyone practises space, stance and voice, and disengaging, at least once' },
+          ],
+        },
+        {
+          h: '実技の約束', hEn: 'Ground Rules for the Practical',
+          b: [
+            { ja: '相手役は、実際につかんだり押したりしない', en: 'If you are the other person, do not actually grab or push' },
+            { ja: '技を掛け合う訓練ではない。位置取りと声の訓練である', en: 'This is not about techniques. It is about positioning and voice' },
+            { ja: '痛みや不安があれば、その場で止めて申し出る', en: 'If anything hurts or worries you, stop and say so at the time' },
+          ],
+        },
+      ],
     },
 
     {

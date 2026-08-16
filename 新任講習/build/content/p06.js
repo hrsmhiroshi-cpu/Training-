@@ -9,7 +9,7 @@ const SRC_AID = '総務省消防庁「救急蘇生法の指針（市民用）」
 
 module.exports = {
   file: '06_6限_応急手当.pptx',
-  footJa: '第6時限｜基本教育6 応急の措置（実技）',
+  footJa: '第6時限｜基本教育6 事故の発生時における警察機関への連絡その他応急の措置 ②（実技）',
   footEn: 'Period 6 | Basic Training 6 — First Aid (Practical)',
   slides: [
     {

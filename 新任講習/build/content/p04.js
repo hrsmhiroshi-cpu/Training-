@@ -4,9 +4,11 @@
 
 const { META_JA, META_EN, SRC, slot } = require('./common');
 
+const SUBJ = '警備業法その他警備業務の適正な実施に必要な法令';
+
 module.exports = {
   file: '04_4限_刑法刑訴法と権限の限界.pptx',
-  footJa: '第4時限｜基本教育4 刑法・刑事訴訟法と権限の限界',
+  footJa: `第4時限｜基本教育4 ${SUBJ} ②`,
   footEn: 'Period 4 | Basic Training 4 — Criminal Law and the Limits of Your Authority',
   slides: [
     {

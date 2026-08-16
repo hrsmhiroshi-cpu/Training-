@@ -6,7 +6,7 @@ const { META_JA, META_EN, SRC, slot } = require('./common');
 
 module.exports = {
   file: '05_5限_通報と現場保存.pptx',
-  footJa: '第5時限｜基本教育5 事故発生時の警察機関への連絡その他応急の措置',
+  footJa: '第5時限｜基本教育5 事故の発生時における警察機関への連絡その他応急の措置 ①',
   footEn: 'Period 5 | Basic Training 5 — Emergency Reporting and Scene Preservation',
   slides: [
     {

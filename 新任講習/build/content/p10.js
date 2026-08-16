@@ -4,9 +4,11 @@
 
 const { META_JA, META_EN, SRC, slot } = require('./common');
 
+const SUBJ = 'その他当該警備業務を適正に実施するため必要な知識及び技能';
+
 module.exports = {
   file: '10_10限_立哨受付接遇.pptx',
-  footJa: '第10時限｜業務別教育3 立哨・受付・接遇',
+  footJa: `第10時限｜業務別教育3 ${SUBJ}`,
   footEn: 'Period 10 | Task-Specific Training 3 — Standing Post, Reception and Conduct',
   slides: [
     {
