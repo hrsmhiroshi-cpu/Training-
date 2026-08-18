@@ -1,5 +1,5 @@
 'use strict';
-// VRM 新任講習 Day1-2（14時限）ビルド
+// VRM 新任講習 Day1-2（15時限）ビルド
 // 前回現任講習の生成系（design.js / layouts.js）をそのまま用いる。
 //   node build/generate.js          全時限
 //   node build/generate.js 1 2      指定した時限だけ
@@ -11,7 +11,7 @@ const { LOGO } = require('./design');
 const DEBRIEFS = require('./debriefs');
 
 const PERIODS = {};
-for (let i = 1; i <= 14; i++) {
+for (let i = 1; i <= 15; i++) {
   const f = path.join(__dirname, 'content', `p${String(i).padStart(2, '0')}.js`);
   if (fs.existsSync(f)) PERIODS[i] = require(f);
 }

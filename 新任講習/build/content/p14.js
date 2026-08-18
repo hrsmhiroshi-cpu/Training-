@@ -1,6 +1,5 @@
 'use strict';
 // 第14時限｜業務別教育7 警報装置その他当該警備業務を実施するために使用する機器の使用方法
-// Day 2 総括・確認テストを含む
 // 内容ソース: HRSM指定の2記事（消火器・屋内消火栓）、前回現任講習 第10限
 
 const path = require('path');
@@ -14,7 +13,7 @@ const SRC_FIRE = '消防法、総務省消防庁、株式会社初田製作所�
 module.exports = {
   file: '14_14限_消防用設備.pptx',
   footJa: `第14時限｜業務別教育7 ${SUBJ}`,
-  footEn: 'Period 14 | Task-Specific Training 7 — Security and Fire Safety Equipment',
+  footEn: 'Period 14 | Task-Specific Training 7 — Fire Safety Equipment',
   slides: [
     {
       type: 'title',
@@ -328,70 +327,16 @@ module.exports = {
     },
 
     {
-      type: 'rows',
-      titleJa: '確認テスト　問1〜問5', titleEn: 'Assessment — Questions 1 to 5',
-      lead: '15分。回答は日本語・英語どちらでも構いません。記述は一言で結構です。',
-      leadEn: '15 minutes. Answer in Japanese or English. Short answers are fine.',
-      rows: [
-        { ja: '出入管理で確認する3つのことを挙げよ。', en: 'Name the three things access control verifies.' },
-        { ja: '共連れを強行突破された。あなたは何をするか。', en: 'Someone tailgates and pushes through. What do you do?' },
-        { ja: '巡回の3つの目的を挙げよ。最も忘れられやすいのはどれか。', en: 'Name the three purposes of patrol. Which is most often forgotten?' },
-        { ja: '「不審」と判断する根拠にしてよいものと、してはいけないものは何か。', en: 'What may and may not be a ground for treating someone as suspicious?' },
-        { ja: '保全と開示の違いは何か。警備員が受けられるのはどちらか。', en: 'What is the difference between preserving and disclosing? Which may you accept?' },
-      ],
-    },
-
-    {
-      type: 'rows',
-      titleJa: '確認テスト　問6〜問10', titleEn: 'Assessment — Questions 6 to 10',
-      rows: [
-        { ja: '不審な物件を発見した。してはいけないことを3つ挙げよ。', en: 'You find a suspicious object. Name three things you must not do.' },
-        { ja: '引継ぎに必ず含める項目を4つ挙げよ。', en: 'Name four things a handover must contain.' },
-        { ja: '受信機が発報した。最初に確認するものは何か。', en: 'The fire panel activates. What do you check first?' },
-        { ja: '1号消火栓を、あなた1人で使ってよいか。理由も述べよ。', en: 'May you use a Type 1 hydrant on your own? Give your reason.' },
-        { ja: '消火器による初期消火をやめる目安はどこか。', en: 'At what point do you stop trying to put a fire out with an extinguisher?' },
-      ],
-    },
-
-    {
-      type: 'rows',
-      titleJa: '確認テスト　解答　問1〜問5', titleEn: 'Assessment — Answers 1 to 5',
-      lead: '表現が異なっても、要点が含まれていれば正解とします。',
-      leadEn: 'Different wording is fine if the point is there.',
-      rows: [
-        { ja: '問1　誰か、入ってよいか、どこまでか。', en: 'Q1 Who they are, whether they may enter, and how far that goes.' },
-        { ja: '問2　追わない。人相・着衣・時刻を記録し、上長へ報告してカメラ確認を依頼する。', en: 'Q2 Do not chase. Record appearance, clothing and time; report and ask for the footage.' },
-        { ja: '問3　発見・抑止・記録。忘れられやすいのは記録。', en: 'Q3 Detection, deterrence, documentation. Documentation is the one forgotten.' },
-        { ja: '問4　してよいのは観察した行動。国籍・人種・年齢・性別・服装は根拠にならない。', en: 'Q4 Observed behaviour may be a ground. Nationality, race, age, sex and dress may not.' },
-        { ja: '問5　保全は残すこと、開示は渡すこと。受けられるのは保全のみ。', en: 'Q5 Preserving keeps it; disclosing hands it over. Only preservation is yours to accept.' },
-      ],
-    },
-
-    {
-      type: 'rows',
-      titleJa: '確認テスト　解答　問6〜問10', titleEn: 'Assessment — Answers 6 to 10',
-      lead: '問9と問10は重点問題です。落とした受講者には個別に確認してください。',
-      leadEn: 'Questions 9 and 10 are the key items. Follow up individually with anyone who missed them.',
-      rows: [
-        { ja: '問6　触らない、動かさない、開けない。そばで無線を使わないも可。', en: 'Q6 Do not touch, move or open it. "No radio nearby" is also accepted.' },
-        { ja: '問7　未完了事項／例外的に許可した事項／鍵・備品の授受／設備の異常／在館者／指示 から4つ。', en: 'Q7 Any four of: unresolved matters, exceptions allowed, keys and equipment, faults, who is still in, instructions.' },
-        { ja: '問8　地区表示。どこが鳴っているか。確認前に「火事です」とは言わない。', en: 'Q8 The zone display — where it is. Do not say "fire" before verifying.' },
-        { ja: '問9　使えない。1号は訓練を積んだ人が2名以上必要。反動が強く、平型ホースの取り回しも難しい。', en: 'Q9 No. Type 1 needs two or more trained people: strong reaction force and a hard-to-handle flat hose.' },
-        { ja: '問10　炎が天井に達する前まで。それ以降は避難と通報を優先する。', en: 'Q10 Up to the point flames reach the ceiling. After that, evacuation and calling come first.' },
-      ],
-    },
-
-    {
       type: 'close',
-      titleJa: 'Day 2 総括', titleEn: 'Day 2 — Review',
+      titleJa: '第14時限 まとめ', titleEn: 'Period 14 — Summary',
       rows: [
-        { ja: '出入管理は1認証で1人。応じない相手は追わず、記録に切り替える。', en: 'One authentication, one person. Do not chase; switch to recording.' },
-        { ja: '不審の根拠は行動。外見・国籍・言語は根拠にならない。', en: 'Behaviour is the ground. Appearance, nationality and language are not.' },
-        { ja: '引継ぎは口頭と記録の両方。「異常なし」だけで終えない。', en: 'Hand over verbally and in writing. Do not stop at "nothing to report".' },
-        { ja: '発報は火災の確定ではない。1号消火栓は単独で扱わない。', en: 'An activation is not a confirmed fire, and a Type 1 hydrant is never handled alone.' },
+        { ja: '消火器は適応火災を確認してから使う。表示の色で分かる。', en: 'Check what an extinguisher works on before using it. The label colours tell you.' },
+        { ja: '1号消火栓は2名以上。単独で扱わない。', en: 'A Type 1 hydrant needs two or more people. Never handle it alone.' },
+        { ja: '発報は火災の確定ではない。地区表示を見てから動く。', en: 'An activation is not a confirmed fire. Read the zone display, then move.' },
+        { ja: '初期消火は炎が天井に達するまで。以降は避難と通報。', en: 'First-response firefighting stops when flames reach the ceiling. Then evacuate and call.' },
       ],
-      next: '2日間で扱ったのは一般原則です。配属先では、必ずSite SOPと警備指令書を確認してください。',
-      nextEn: 'These two days covered general principles. On site, always check the Site SOP and post orders.',
+      next: '第15時限 ― 警備用機器の取扱い。カメラ、入退室管理、無線、非常通報装置。',
+      nextEn: 'Period 15 — operating security equipment: cameras, access control, radios and panic alarms.',
     },
   ],
 };

@@ -167,14 +167,16 @@ function two(pres, d, ctx) {
       ja(col.h, { fontSize: 19, bold: true, color: i === 0 ? C.navy : C.tealDk, breakLine: true }),
       en(col.hEn, { fontSize: 13, color: C.muted }),
     ], { x: x + 0.3, y: top + 0.24, w: cw - 0.6, h: 0.74, valign: 'top', margin: 0, lineSpacingMultiple: 0.9 });
+    // 5件以上は行数がカードの高さを超えるため、日英を同じ幅で1段落とす。
+    const fs = col.items.length >= 5 ? 13 : 15;
     const items = [];
     col.items.forEach((it, k) => {
-      items.push(ja('・' + it.ja, { fontSize: 15, bold: true, color: C.ink, breakLine: true }));
-      items.push(en(it.en, { fontSize: 15, breakLine: k !== col.items.length - 1 }));
+      items.push(ja('・' + it.ja, { fontSize: fs, bold: true, color: C.ink, breakLine: true }));
+      items.push(en(it.en, { fontSize: fs, breakLine: k !== col.items.length - 1 }));
     });
     s.addText(items, {
       x: x + 0.3, y: top + 1.08, w: cw - 0.6, h: ch - 1.34, valign: 'top', margin: 0,
-      paraSpaceAfter: 3, lineSpacingMultiple: 0.94,
+      paraSpaceAfter: col.items.length >= 5 ? 2 : 3, lineSpacingMultiple: 0.94,
     });
   });
   if (d.note) {
@@ -403,10 +405,11 @@ function caseSlide(pres, d, ctx) {
   // Size the scenario panel to its text rather than leaving a fixed hole.
   // Explicit newlines (bullet-style scenarios) count as their own lines; the rest wraps.
   const lines = (t, per) => t.split('\n').reduce((n, ln) => n + Math.max(1, Math.ceil(ln.length / per)), 0);
-  const jaLines = lines(d.scenarioJa, 74);
-  const enLines = lines(d.scenarioEn, 150);
+  // 1行に入る字数は実測値（JA 約50字、EN 約105字）。行高もそれぞれの実寸に合わせる。
+  const jaLines = lines(d.scenarioJa, 50);
+  const enLines = lines(d.scenarioEn, 105);
   const sh = d.scenarioH ||
-    Math.min(2.20, Math.max(1.05, 0.40 + jaLines * 0.21 + enLines * 0.135 + 0.14));
+    Math.min(2.60, Math.max(1.05, 0.30 + jaLines * 0.20 + enLines * 0.19 + 0.28));
   s.addShape('roundRect', { x: G.M, y: sy, w: G.CW, h: sh, rectRadius: 0.04, fill: { color: C.navy }, line: { type: 'none' } });
   s.addText([
     ja('シナリオ　', { fontSize: 11, bold: true, color: C.teal }),

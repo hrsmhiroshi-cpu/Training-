@@ -358,6 +358,22 @@ const D = {
     splitEn: 'Go and verify alone, or keep someone at the panel? With two people you cannot do both. Make them say which they dropped.',
   },
 
+  // ── 第15時限 ──────────────────────────────────────────────────────────────
+  'CASE 15-A': {
+    titleJa: 'TTX 15-A 模範解答', titleEn: 'TTX 15-A — Model Answers',
+    sources: '警備業法施行規則第38条第3項、警察庁「警備員教育」',
+    sopLabel: SOP_LABEL, sop: SOP, sopEn: SOP_EN,
+    answers: [
+      { q: '2つの事象を分けるか', key: true, a: '記録は分けて書き、報告では併せて伝える。同時に起きた事実が重要である。', aEn: 'Record them separately, report them together. That they coincided is the key fact.' },
+      { q: '4階へ行くか、先に報告するか', a: '先に第一報。「4階カメラ4台停止、入退室記録が不一致」。指示を受けて確認へ向かう。', aEn: 'Report first: "Four cameras down on the fourth floor, logs do not match." Then go up.' },
+      { q: '工事業者への確認', a: '人数を聞く。入館4名、退館は3件。差の1名がどこにいるかを確認する。', aEn: 'Ask for a headcount. Four in, three exits logged. Find where the fourth is.' },
+      { q: '記録に何を書くか', a: '停止時刻、停止台数、不一致の内容、代替措置、報告先と時刻。推測は書かない。', aEn: 'Time of outage, how many cameras, the mismatch, the fallback, whom you told and when.' },
+    ],
+    inject1: { q: '「全員出た」と連絡が入った', a: '連絡は受けるが、記録との差は残す。「業者申告：全員退館／記録：3件」と両方書く。', aEn: 'Take the call, but keep the discrepancy. Write both: crew says all out, log shows three.' },
+    inject2: { q: '停止中の映像は残っていなかった', a: '検証手段がないことを報告に明記する。人による確認結果を記録に残す。', aEn: 'State in the report that there is no footage. Record what people verified instead.' },
+    split: 'カードの貸し借りを疑うか、機器の不具合を疑うか。どちらでも先に人を探す点は共通である。',
+    splitEn: 'Card sharing, or a system fault? Either way, both must land on finding the person first.',
+  },
 };
 
 module.exports = D;
